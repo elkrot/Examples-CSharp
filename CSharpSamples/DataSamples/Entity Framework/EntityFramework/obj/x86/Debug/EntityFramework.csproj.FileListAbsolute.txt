@@ -1,0 +1,13 @@
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\Employee.mdf
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\Employee_log.LDF
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.EntityFramework.dll.config
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.EntityFramework.dll
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.EntityFramework.pdb
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.EntityFramework.dll.CodeAnalysisLog.xml
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.EntityFramework.dll.lastcodeanalysissucceeded
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.Common.dll
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.Model.dll
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.Common.pdb
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.Model.pdb
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\obj\x86\Debug\EmployeeTracker.EntityFramework.dll
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\obj\x86\Debug\EmployeeTracker.EntityFramework.pdb

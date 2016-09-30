@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Образец простой вариантности</title>
+<style type="text/css">
+</style>
+</head>
+
+<body>
+<p>В образце программы <strong>SimpleVariance</strong> демонстрируется реализованная в C# 4.0 поддержка ковариантности и контравариантности при использовании универсальных типов в делегатах и интерфейсах. В C# 3.0 универсальные типы были инвариантными. В связи с этим данный образец компилируется без ошибок в C# 4.0, однако не компилируется в предыдущих версиях C#.</p>
+
+<p>Сначала в программе объявляются два простых класса и два делегата:</p>
+
+<pre class="code"><span style="color: blue">class</span>  <span style="color: #2b91af">Animal</span> { }
+<span style="color: blue">class</span> <span style="color: #2b91af">Cat</span> : <span style="color: #2b91af">Animal</span> { }
+
+<span style="color: blue">delegate </span>T <span style="color: #2b91af">Func1</span>&lt;<span style="color: blue">out </span>T&gt;();
+<span style="color: blue">delegate void </span><span style="color: #2b91af">Action1</span>&lt;<span style="color: blue">in </span>T&gt;(T a);</pre>
+<p>Затем в ней реализуются делегаты и используются классы:</p>
+<pre class="code"><span style="color: #2b91af">Func1</span>&lt;<span style="color: #2b91af">Cat</span>&gt; cat = () =&gt; <span style="color: blue">new </span><span style="color: #2b91af">Cat</span>();
+<span style="color: #2b91af">Action1</span>&lt;<span style="color: #2b91af">Animal</span>&gt; act1 = (ani) =&gt; { <span style="color: #2b91af">Console</span>.WriteLine(ani); };</pre>
+
+<p>После этого в программе выполняются присваивания, для которых требуется поддержка ковариантности и контравариантности:</P>
+
+<pre class="code"><span style="color: #2b91af">Func1</span>&lt;<span style="color: #2b91af">Animal</span>&gt; animal = cat;
+<span style="color: #2b91af">Action1</span>&lt;<span style="color: #2b91af">Cat</span>&gt; cat1 = act1;</pre>
+
+<p>Эти присваивания поддерживаются в C# 4.0 и не поддерживаются в предыдущих версиях C#. Первое присваивание демонстрирует ковариантность, а второе — контравариантность.</p>
+<p>С помощью новых контекстных ключевых слов <strong>out</strong> и <strong>in</strong> можно задать передачу универсального типа в метод делегата или интерфейса, либо его возврат из метода делегата или интерфейса.</p>
+
+</body>
+
+</html>
+

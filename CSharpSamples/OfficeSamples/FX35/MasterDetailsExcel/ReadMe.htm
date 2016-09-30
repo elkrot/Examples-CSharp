@@ -1,0 +1,33 @@
+﻿<html><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" /><META NAME="save" CONTENT="history" /><title xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">Пример основного/подробного представления данных</title><META NAME="Description" CONTENT="Данный пример работает только в Microsoft Office Excel 2007."></META><META NAME="MS.LOCALE" CONTENT="en-us" /><style>
+body
+{font-family:Verdana;font-size:medium;}
+div#mainSection, div#header
+{font-size:70%;width: 100%;}
+div#mainBody
+{font-size:90%;}
+div#mainSection div table
+{font-size: 100%;text-align: left;}
+span#nsrTitle
+{color:#003399;font-size:90%;font-weight:600;}
+div#header
+{background-color:#D4DFFF;}
+.heading
+{font-size:120%;color:#003399;}
+.subHeading
+{font-size:100%;margin-bottom:4;}
+li
+{margin-top:-2;margin-bottom:3;}
+p
+{margin-top:10;margin-bottom:5;}
+div.tableSection p
+{margin-top:1;margin-bottom:4;}	
+div#mainSection table th
+{background-color:#EFEFF7;color:#000066;text-align:left;}
+div#mainSection table td
+{background-color:#F7F7FF;}
+div#mainSection table
+{margin-top:5px;margin-bottom: px;}
+.style1{color: Green;}
+			</style></head><body><div id="header"><table width="100%" id="topTable"></table></div><div id="mainSection"><div id="mainBody"><p><span class="style1">&#39; © Корпорация Майкрософт (Microsoft Corp.). Все права защищены. </span> <br class="style1" /> <span class="style1">&#39; Данный код выпущен на условиях </span> <br class="style1" /> <span class="style1">&#39; открытой лицензии Майкрософт (MS-PL, <a href="http://opensource.org/licenses/ms-pl.html"> http://opensource.org/licenses/ms-pl.html</a>.)</span></p><br /><div class="introduction"><div class="alert"><table width="100%" cellspacing="0" cellpadding="0" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><tr><th align="left"><b>Примечание.</b></th></tr><tr><td><p>Данный пример работает только в Microsoft Office Excel 2007 и последующих версиях.</p></td></tr></table></div><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">В данном примере демонстрируется извлечение данных из реляционной базы данных или XML-файла и использование этих данных в приложении Excel.</p><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">В примере используется лист выполнения заказа. В листе отображаются подробности заказов клиентов, что позволяет объединить позиции для поставки. В листе также выводятся сведения о наличии каждой позиции на складе, чтобы пользователь знал, можно ли выполнить заказ.</p><div class="alert"><table width="100%" cellspacing="0" cellpadding="0" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><tr><th align="left"><b>Примечание по безопасности.</b></th></tr><tr><td><p>Этот пример кода приведен для иллюстрации концепции, в нем приведен код, который относится только к данной концепции. Пример может не отвечать требованиям безопасности для определенной среды, и его не следует использовать в точности в том виде, в котором он приведен. Чтобы сделать проект более безопасным и надежным, рекомендуется добавить в него код обеспечения безопасности и код обработки ошибок. Корпорация Майкрософт предоставляет этот пример кода на условиях «КАК ЕСТЬ», без каких-либо гарантий.</p></td></tr></table></div><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">Сведения об установке проекта примера на компьютере см. в разделе «Инструкции: установка и использование файлов примеров, включенных в справку».</p></div><h3 class="procedureSubHeading" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">Запуск примера</h3><div class="subSection"><ol xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Нажмите клавишу F5.</p></li><li><p>Выберите в списке <span class="ui">Выбор клиента</span> имя клиента.</p><p>В списке <span class="ui">Невыполненные заказы</span> находятся номера заказов без отметки <span class="ui">Выполнен</span>.</p></li><li><p>Выберите в списке <span class="ui">Невыполненные заказы</span> номер заказа.</p><p>На лист будут выведены подробности заказа.</p></li><li><p>В списке <span class="ui">Состояние заказа</span> выберите пункт <span class="ui">Выполнен</span>.</p><p>После изменение состояния на <span class="ui">Выполнен</span> выполните указанные ниже действия.</p><ul><li><p>Состояние заказа сохраняется обратно в хранящийся в памяти набор данных.</p></li><li><p>Количество единиц каждого заказанного продукта в заказе вычитается из значения параметра <span class="ui">UnitsInStock</span> для этого продукта в хранящемся в памяти наборе данных. Это гарантирует правильное значение параметра <span class="ui">UnitsInStock</span> для каждого продукта при следующем заказе.</p></li><li><p>Заказ удаляется из списка <span class="ui">Невыполненные заказы</span>.</p></li></ul></li></ol></div><h1 class="heading" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><span onclick="ExpandCollapse(demonstratesToggle)" style="cursor:default;" onkeypress="ExpandCollapse_CheckKey(demonstratesToggle, event)" tabindex="0">Демонстрации</span></h1><div id="demonstratesSection" class="section"><p xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt">В данном примере демонстрируются указанные ниже возможности: </p><ul xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Загрузка и использование данных из XML-файла, извлеченного из базы данных SQL Server. </p></li><li><p>Вывод данных с помощью привязанных к данным элементов управления Excel.</p></li><li><p>Работа с несколькими наборами основных/подробных данных .</p></li></ul></div></div>
+    </div>
+</body></html>

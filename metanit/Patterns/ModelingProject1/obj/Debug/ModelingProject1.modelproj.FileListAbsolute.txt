@@ -1,0 +1,3 @@
+D:\temp\_projects\metanit\Patterns\ModelingProject1\bin\Debug\Patterns.exe
+D:\temp\_projects\metanit\Patterns\ModelingProject1\bin\Debug\Patterns.pdb
+D:\temp\_projects\metanit\Patterns\ModelingProject1\obj\Debug\ModelingProject1.modelprojResolveAssemblyReference.cache

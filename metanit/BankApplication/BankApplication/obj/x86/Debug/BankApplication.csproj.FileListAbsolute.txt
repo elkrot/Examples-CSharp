@@ -1,0 +1,7 @@
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankApplication\bin\Debug\BankApplication.exe
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankApplication\bin\Debug\BankApplication.pdb
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankApplication\bin\Debug\BankLibrary.dll
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankApplication\bin\Debug\BankLibrary.pdb
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankApplication\obj\x86\Debug\BankApplication.csprojResolveAssemblyReference.cache
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankApplication\obj\x86\Debug\BankApplication.exe
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankApplication\obj\x86\Debug\BankApplication.pdb

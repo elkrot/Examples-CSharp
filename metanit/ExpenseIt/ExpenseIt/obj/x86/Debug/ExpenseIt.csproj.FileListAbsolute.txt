@@ -1,0 +1,16 @@
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\ExpenseItHome.baml
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\ExpenseReportPage.baml
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\MainWindow.baml
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\ExpenseItHome.g.cs
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\ExpenseReportPage.g.cs
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\MainWindow.g.cs
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\App.g.cs
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\ExpenseIt_MarkupCompile.cache
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\ExpenseIt.g.resources
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\ExpenseIt.Properties.Resources.resources
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\ExpenseIt.csproj.GenerateResource.Cache
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\bin\Debug\ExpenseIt.exe
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\bin\Debug\ExpenseIt.pdb
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\ExpenseIt.exe
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\ExpenseIt.pdb
+D:\temp\_projects\metanit\ExpenseIt\ExpenseIt\obj\x86\Debug\App.baml

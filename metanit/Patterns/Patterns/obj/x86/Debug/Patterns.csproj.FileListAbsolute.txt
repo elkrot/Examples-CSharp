@@ -1,0 +1,4 @@
+D:\temp\_projects\metanit\Patterns\Patterns\bin\Debug\Patterns.exe
+D:\temp\_projects\metanit\Patterns\Patterns\bin\Debug\Patterns.pdb
+D:\temp\_projects\metanit\Patterns\Patterns\obj\x86\Debug\Patterns.exe
+D:\temp\_projects\metanit\Patterns\Patterns\obj\x86\Debug\Patterns.pdb

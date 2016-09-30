@@ -1,0 +1,1 @@
+D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\WCF Data Services\UserInterface\bin\Debug\UserInterface.exe.config

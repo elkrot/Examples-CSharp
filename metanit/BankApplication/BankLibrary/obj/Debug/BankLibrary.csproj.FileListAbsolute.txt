@@ -1,0 +1,4 @@
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankLibrary\bin\Debug\BankLibrary.dll
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankLibrary\bin\Debug\BankLibrary.pdb
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankLibrary\obj\Debug\BankLibrary.dll
+c:\users\дом\documents\visual studio 2010\Projects\BankApplication\BankLibrary\obj\Debug\BankLibrary.pdb

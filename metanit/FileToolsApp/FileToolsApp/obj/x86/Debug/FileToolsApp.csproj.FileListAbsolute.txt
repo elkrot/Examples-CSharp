@@ -1,0 +1,4 @@
+c:\users\дом\documents\visual studio 2010\Projects\FileToolsApp\FileToolsApp\bin\Debug\FileToolsApp.exe
+c:\users\дом\documents\visual studio 2010\Projects\FileToolsApp\FileToolsApp\bin\Debug\FileToolsApp.pdb
+c:\users\дом\documents\visual studio 2010\Projects\FileToolsApp\FileToolsApp\obj\x86\Debug\FileToolsApp.exe
+c:\users\дом\documents\visual studio 2010\Projects\FileToolsApp\FileToolsApp\obj\x86\Debug\FileToolsApp.pdb

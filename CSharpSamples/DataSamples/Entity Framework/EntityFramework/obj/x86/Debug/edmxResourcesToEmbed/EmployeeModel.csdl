@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeTracker.EntityFramework" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="EmployeeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ContactDetails" EntityType="EmployeeTracker.EntityFramework.ContactDetail" />
+    <EntitySet Name="Departments" EntityType="EmployeeTracker.EntityFramework.Department" />
+    <EntitySet Name="Employees" EntityType="EmployeeTracker.EntityFramework.Employee" />
+    <AssociationSet Name="FK_ContactDetail_Employee" Association="EmployeeTracker.EntityFramework.FK_ContactDetail_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="ContactDetail" EntitySet="ContactDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Department" Association="EmployeeTracker.EntityFramework.FK_Employee_Department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Manager" Association="EmployeeTracker.EntityFramework.FK_Employee_Manager">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Employee1" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+  <Function Name="GetTenure" ReturnType="Edm.Int32">
+    <Parameter Name="employee" Type="EmployeeTracker.EntityFramework.Employee" />
+    <DefiningExpression>
+            Edm.DiffYears(employee.HireDate, Edm.CurrentDateTime())
+          </DefiningExpression>
+  </Function>
+  <EntityType Name="ContactDetail" Abstract="true">
+    <Key>
+      <PropertyRef Name="ContactDetailId" />
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="ContactDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Type="String" Name="Usage" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="DepartmentCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LastAudited" Type="DateTime" />
+    <NavigationProperty Name="Employees" Relationship="EmployeeTracker.EntityFramework.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FirstName" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Position" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="HireDate" Type="DateTime" Nullable="false" />
+    <Property Name="TerminationDate" Type="DateTime" />
+    <Property Name="BirthDate" Type="DateTime" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <Property Name="ManagerId" Type="Int32" />
+    <NavigationProperty Name="ContactDetails" Relationship="EmployeeTracker.EntityFramework.FK_ContactDetail_Employee" FromRole="Employee" ToRole="ContactDetail" />
+    <NavigationProperty Name="Department" Relationship="EmployeeTracker.EntityFramework.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
+    <NavigationProperty Name="Manager" Relationship="EmployeeTracker.EntityFramework.FK_Employee_Manager" FromRole="Employee1" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK_ContactDetail_Employee">
+    <End Role="Employee" Type="EmployeeTracker.EntityFramework.Employee" Multiplicity="1" />
+    <End Role="ContactDetail" Type="EmployeeTracker.EntityFramework.ContactDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="ContactDetail">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Department">
+    <End Role="Department" Type="EmployeeTracker.EntityFramework.Department" Multiplicity="0..1" />
+    <End Role="Employee" Type="EmployeeTracker.EntityFramework.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Manager">
+    <End Role="Employee" Type="EmployeeTracker.EntityFramework.Employee" Multiplicity="0..1" />
+    <End Role="Employee1" Type="EmployeeTracker.EntityFramework.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Employee1">
+        <PropertyRef Name="ManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Email" BaseType="EmployeeTracker.EntityFramework.ContactDetail">
+    <Property Type="String" Name="Address" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Phone" BaseType="EmployeeTracker.EntityFramework.ContactDetail">
+    <Property Type="String" Name="Number" Nullable="false" />
+    <Property Type="String" Name="Extension" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Address" BaseType="EmployeeTracker.EntityFramework.ContactDetail">
+    <Property Type="String" Name="LineOne" Nullable="false" />
+    <Property Type="String" Name="LineTwo" Nullable="false" />
+    <Property Type="String" Name="City" Nullable="false" />
+    <Property Type="String" Name="State" Nullable="false" />
+    <Property Type="String" Name="ZipCode" Nullable="false" />
+    <Property Type="String" Name="Country" Nullable="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>В этом образце демонстрируется использование</title>
+<style type="text/css">
+.style1 {
+	color: #0000FF;
+}
+.style2 {
+	line-height: 115%;
+	font-size: 10.0pt;
+	font-family: Consolas;
+	margin-left: .2in;
+	margin-right: 0in;
+	margin-top: 0in;
+	margin-bottom: 10.0pt;
+}
+.style3 {
+	color: #FF0000;
+}
+.style4 {
+	color: #0D540D;
+}
+.style5 {
+	color: #000000;
+}
+</style>
+</head>
+
+<body>
+
+<p>В этом образце демонстрируется использование компонентов <em>COM-взаимодействия</em> C# 4.0 с <em>пропуском модификатора <strong>ref</strong>, индексированных свойств</em> и<em> именованных и необязательных параметров</em> для создания приложения C#, взаимодействующего с приложениями Microsoft Office. Для доступа к приложениям пакета Microsoft Office, таким как Word или Excel, разработчикам приложений C# обычно приходилось писать достаточно сложный код.&nbsp; Применение новых компонентов C# 4.0 позволяет значительно упростить вызов API-интерфейсов Office.</p>
+<p>Рассмотрим следующее объявление метода Microsoft Office, используемое в этом образце:</p>
+<p>void PasteSpecial(<span class="style1">ref object </span>IconIndex = <span class="style1">null</span>, <span class="style1">ref object</span> Link = <span class="style1">null</span>, <BR> &nbsp;&nbsp;&nbsp; <span class="style1">ref object </span>Placement = <span class="style1">null</span>, <span class="style1">ref object </span> DisplayAsIcon = <span class="style1">null</span>,<span class="style1"> </span><BR> <span class="style1">&nbsp;&nbsp;&nbsp; ref object</span> DataType = <span class="style1">null</span>, <span class="style1">ref object</span> IconFileName = <span class="style1">null</span>, <BR> <span class="style1">&nbsp;&nbsp;&nbsp; ref object</span> IconLabel = <span class="style1">null</span>);</p>
+
+<p>Как можно видеть, в этом методе принимается достаточно большое число параметров. В C# разработчикам обычно приходилось заполнять все параметры, даже если для упрощения вызова в нем предполагалось использование необязательных параметров. В C# 4.0 реализована поддержка именованных и необязательных параметров, что позволяет разработчику задавать только нужные параметры и использовать значения по умолчанию для остальных параметров:</p>
+<p>word.Selection.PasteSpecial(Link: <span class="style1">true</span>, DisplayAsIcon: <span class="style1">true</span>);</p>
+<p>В вызове метода <strong>PasteSpecial</strong> параметры <strong>Link</strong> и <strong>DisplayAsIcon</strong> являются явно именованными и получают значение <span class="style5"><strong>true</strong></span>. Всем остальным параметрам присваиваются значения по умолчанию, задаваемые внутренне разработчиками API-интерфейса Office, как показано в сигнатуре выше.</p>
+<p>При этом можно создавать собственные вызовы, поддерживающие именованные и необязательные параметры. Рассмотрим следующий пример:</p>
+<p class="style2"><span class="style1">public void</span> M(<span class="style1">int</span> x, <span class="style1">int</span> y = 5, <span class="style1">int</span> z = 7) { }</p>
+<p>В этом методе параметрам y и z присваиваются значения по умолчанию. Вызов этого метода может иметь следующий вид:</p>
+<p>M(<span class="style3">1</span>, <span class="style3">2</span>, <span class="style3">3</span>); <span class="style4">// обычный вызов метода M</span><br /> M(<span class="style3">1</span>, 2);<span class="style4"> // пропуск параметра z — эквивалентно вызову метода M(1, 2, 7)</span><br /> M(<span class="style3">1</span>);&nbsp; <span class="style4">// пропуск параметров y и z — эквивалентно вызову метода M(1, 5, 7)</span><br /> M(<span class="style3">1</span>, z:<span class="style3"> 3</span>); <span class="style4">// передача параметра z по имени</span><br /> M(x: <span class="style3">1</span>, z:<span class="style3"> 3</span>); <span class="style4">// передача параметров x и z по имени</span><br /> M(z:<span class="style3"> 3</span>, x:<span class="style3"> 1</span>); <span class="style4">// использование обратного порядка аргументов</span></p>
+<p>Применение нового динамического компонента C# 4.0 позволяет значительно упростить работу с приложениями Office для разработчиков C#. Типы, используемые в приложениях Office, теперь представлены разработчикам C# так, как если бы они были объявлены с типом <strong>dynamic</strong>. Ниже приведен традиционный способ установки свойства Cell:</p>
+<p class="style2">((Excel.Range)excel.Cells[1, 1]).Value2 = &quot;ID&quot;;</p>
+<p>В C# 4.0 разработчики могут использовать следующий код:</p>
+<p class="style2">X1.Cells[<span class="style3">1</span>, <span class="style3">1</span>].Value =<span class="style3"> &quot;ID&quot;</span>;</p>
+<p>Применение <em>индексированных свойств</em> позволяет еще более упростить вызов метода, который будет выглядеть следующим образом:</p>
+<p class="style2">xl.Cells[1, 1] = &quot;ID&quot;;</p>
+<p>Еще один компонент, который могут использовать разработчики приложений Office, называется no-PIA. Основные сборки взаимодействия (PIA) создаются на основе COM-интерфейсов и обеспечивают эффективную поддержку типов на этапе разработки. Однако применение таких сборок во время выполнения может привести к увеличению размера программы и вызвать проблемы несоответствия версий. Применение компонента no-PIA позволяет использовать основные сборки взаимодействия на этапе разработки и отказаться от их использования во время выполнения. Компилятор C# встраивает ту часть основной сборки взаимодействия, которая фактически используется в программе, в соответствующую сборку. В связи с этим не требуется включать основные сборки взаимодействия в распространяемый пакет программы.</p>
+
+</body>
+
+</html>
+
