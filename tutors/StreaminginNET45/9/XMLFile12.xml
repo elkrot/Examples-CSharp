@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Books>
+  <Book id="1">
+    <Title>Streaming in .NET</Title>
+    <Category>IT</Category>
+  </Book>
+</Books>
