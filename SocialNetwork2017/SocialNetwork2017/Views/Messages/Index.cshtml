@@ -1,0 +1,23 @@
+﻿@using SocialNetwork2017.Models
+@model List<IncomingMessageViewModel>
+@{
+    ViewBag.Title = "Мои сообщения";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>входящие | @Html.ActionLink("исходящие", "Outgoing", "Messages")</h2>
+<table>
+    <tr>
+        <td>От кого</td>
+        <td>Когда</td>
+        <td>Текст</td>
+    </tr>
+    @foreach (IncomingMessageViewModel message in Model)
+    {
+        <tr>
+            <td>@message.UserFrom.LastName @message.UserFrom.FirstName</td>
+            <td>@message.Message.CreatedDate.ToShortDateString()</td>
+            <td>@message.Message.Text</td>
+        </tr>
+    }
+</table>

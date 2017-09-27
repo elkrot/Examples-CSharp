@@ -1,0 +1,21 @@
+﻿@using SocialNetwork2017.Domain
+@model OutgoingMessage
+@{
+    ViewBag.Title = "Новое сообщение";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Новое сообщение
+</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.UserId)
+    @Html.HiddenFor(x => x.UserToId)
+    @Html.HiddenFor(x => x.CreatedDate)
+    <p>
+        Введите текст сообщения:<br />
+        @Html.TextAreaFor(x => x.Text)
+        @Html.ValidationMessageFor(x => x.Text)
+    </p>
+    <input type="submit" value="Отправить" />
+}

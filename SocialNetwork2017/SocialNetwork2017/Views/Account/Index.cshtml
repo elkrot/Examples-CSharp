@@ -1,0 +1,26 @@
+﻿@using SocialNetwork2017.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Добро пожаловать!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Добро пожаловать к нам на сайт!</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        <p>@Html.ValidationSummary(true)</p>
+        <p>
+            Логин: @Html.TextBoxFor(x => x.UserName) @Html.ValidationMessageFor(x => x.UserName)
+        </p>
+        <p>
+            Пароль: @Html.EditorFor(x => x.Password) @Html.ValidationMessageFor(x => x.Password)
+        </p>
+        <input type="submit" id="LoginButton" value="Вход" />
+    }
+    <p>
+        Если у вас еще нет аккаунта, то вы можете легко @Html.ActionLink("зарегистрироваться", "Register")
+    </p>
+</div>
+
+

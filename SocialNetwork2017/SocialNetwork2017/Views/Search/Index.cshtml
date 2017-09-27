@@ -1,0 +1,40 @@
+﻿
+@using SocialNetwork2017.Domain
+@model IEnumerable<User>
+@{
+    ViewBag.Title = "Поиск пользователей";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Поиск пользователей
+</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        <p>
+            Попробуйте найти пользователя по ФИО:
+        </p>
+            <p>
+                Фамилия: @Html.TextBox("lastName")
+            </p>
+            <p>
+                Имя: @Html.TextBox("firstName")
+            </p>
+            <p>
+                Отчество: @Html.TextBox("middleName")
+            </p>
+            <input type="submit" value="Найти человека" />
+    }
+</div>
+@if (Model != null && Model.Any())
+{
+    <p>
+        Результаты поиска:
+    </p>
+    foreach (User user in Model)
+    {
+        <div>@Html.ActionLink(user.LastName + " " + user.FirstName + " " + user.MiddleName, "Index", "Home", new { id = user.Id }, null)</div>
+    }
+}
+
+

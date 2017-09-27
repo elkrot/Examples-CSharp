@@ -1,0 +1,38 @@
+﻿@using SocialNetwork2017.Domain
+@using SocialNetwork2017.Models
+@model FriendsViewModel
+@{
+    ViewBag.Title = "Мои друзья";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Мои друзья</h2>
+@foreach (User user in Model.Friends)
+{
+    <div>
+        @Html.ActionLink(user.LastName + " " + user.FirstName + " " + user.MiddleName, "Index", "Home", new { id = user.Id }, null)
+        (@Html.ActionLink("написать сообщение", "NewMessage", "Messages", new { userToId = user.Id }, null)
+        или
+        @Html.ActionLink("удалить из друзей", "DeleteFriend", "Friends", new { id = user.Id }, null))
+    </div>
+}
+
+<h2>Мои входящие заявки в друзья</h2>
+@foreach (User user in Model.IncomingRequests)
+{
+    <div>
+        @Html.ActionLink(user.LastName + " " + user.FirstName + " " + user.MiddleName, "Index", "Home", new { id = user.Id }, null)
+        (@Html.ActionLink("подтвердить заявку", "ConfirmFriendRequest", "Friends", new { id = user.Id }, null)
+        или
+        @Html.ActionLink("отклонить заявку", "DisagreeFriendRequest", "Friends", new { id = user.Id }, null))
+    </div>
+}
+
+<h2>Мои исходящие заявки в друзья</h2>
+@foreach (User user in Model.OutgoingRequests)
+{
+    <div>
+        @Html.ActionLink(user.LastName + " " + user.FirstName + " " + user.MiddleName, "Index", "Home", new { id = user.Id }, null)
+        (@Html.ActionLink("отменить свою заявку", "CancelFriendRequest", "Friends", new { id = user.Id }, null))
+    </div>
+}
