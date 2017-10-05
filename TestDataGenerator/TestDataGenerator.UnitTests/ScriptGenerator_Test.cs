@@ -8,7 +8,7 @@ namespace TestDataGenerator.UnitTests
     [TestClass]
     public class ScriptGenerator_Test
     {
-        IScriptGenerator generator;
+        ScriptGenerator generator;
         [TestInitialize]
         public void Init()
         {
@@ -89,6 +89,7 @@ namespace TestDataGenerator.UnitTests
 
 
         [TestMethod]
+        
         public void GenerateUser_RegistrationDatePeriod()
         {
 
@@ -97,6 +98,7 @@ namespace TestDataGenerator.UnitTests
             DateTime dt = entity.RegistrationDate;
 
             //Assert
+           
             Assert.IsTrue(dt>new DateTime(2017,1,1));
 
         }
@@ -124,14 +126,14 @@ namespace TestDataGenerator.UnitTests
             
 
             //Assert
-            Assert.Equals(EXPECTED_RESULT,result);
+            Assert.AreEqual(EXPECTED_RESULT,result);
 
         }
 
         [TestMethod]
         public void GenerateUser_GetInsertLine()
         {
-            const string EXPECTED_RESULT = "INSERT INTO BlogUser (Name,Surname,Patronymic,Email,...)";
+            const string EXPECTED_RESULT = @"INSERT INTO BlogUser (Name,Surname,Patronymic,Email,Login,Password,RegistrationDate)";
             //Act
             UserEntity user = new UserEntity()
             {
@@ -156,7 +158,13 @@ namespace TestDataGenerator.UnitTests
             Assert.Equals(result, EXPECTED_RESULT);
 
         }
-
+        [TestMethod]
+        public void MergeLines_test() {
+            const string INSERT_LINE = "INSERT LINE";
+            string[] valueLines = { "Line1", "Line2" };
+            string expecteResult = string.Format("INSERT LINE{0}value Line1", Environment.NewLine);
+            string result = generator.MergeLines(valueLines, INSERT_LINE);
+        }
 
         /*
           private EmailValidationLogic _validationLogic;
