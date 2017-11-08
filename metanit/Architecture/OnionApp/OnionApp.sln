@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApp.Web", "OnionTemplate\OnionApp.Web.csproj", "{54CE9226-3636-478F-9A09-5FEC347F637E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B5A26D0C-85C7-4A0C-B98B-F5949849FCB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApp.Domain.Core", "OnionApp.Domain.Core\OnionApp.Domain.Core.csproj", "{6FC77454-0312-47E2-B1CA-B5E79AF40909}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApp.Domain.Interfaces", "OnionApp.Domain.Interfaces\OnionApp.Domain.Interfaces.csproj", "{6985DA40-1329-4811-9421-6406B8BA4010}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CA175335-1F1E-4EC2-8D48-265A6E1D6AC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApp.Services.Interfaces", "OnionApp.Services.Interfaces\OnionApp.Services.Interfaces.csproj", "{DAFDF62A-FCE6-4020-AB71-D97D4C614C8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A6731631-E1FC-4BEC-A8B8-142F72084D86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApp.Infrastructure.Data", "OnionApp.Infrastructure.Data\OnionApp.Infrastructure.Data.csproj", "{EDC74ADA-5EF0-44E4-929A-0887159F80A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionApp.Infrastructure.Business", "OnionApp.Infrastructure.Business\OnionApp.Infrastructure.Business.csproj", "{047B3B52-EA7B-4D0C-8785-61209EB08B7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54CE9226-3636-478F-9A09-5FEC347F637E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54CE9226-3636-478F-9A09-5FEC347F637E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54CE9226-3636-478F-9A09-5FEC347F637E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54CE9226-3636-478F-9A09-5FEC347F637E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FC77454-0312-47E2-B1CA-B5E79AF40909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FC77454-0312-47E2-B1CA-B5E79AF40909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FC77454-0312-47E2-B1CA-B5E79AF40909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FC77454-0312-47E2-B1CA-B5E79AF40909}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6985DA40-1329-4811-9421-6406B8BA4010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6985DA40-1329-4811-9421-6406B8BA4010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6985DA40-1329-4811-9421-6406B8BA4010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6985DA40-1329-4811-9421-6406B8BA4010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAFDF62A-FCE6-4020-AB71-D97D4C614C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAFDF62A-FCE6-4020-AB71-D97D4C614C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAFDF62A-FCE6-4020-AB71-D97D4C614C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAFDF62A-FCE6-4020-AB71-D97D4C614C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC74ADA-5EF0-44E4-929A-0887159F80A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC74ADA-5EF0-44E4-929A-0887159F80A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC74ADA-5EF0-44E4-929A-0887159F80A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC74ADA-5EF0-44E4-929A-0887159F80A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{047B3B52-EA7B-4D0C-8785-61209EB08B7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{047B3B52-EA7B-4D0C-8785-61209EB08B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{047B3B52-EA7B-4D0C-8785-61209EB08B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{047B3B52-EA7B-4D0C-8785-61209EB08B7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6FC77454-0312-47E2-B1CA-B5E79AF40909} = {B5A26D0C-85C7-4A0C-B98B-F5949849FCB2}
+		{6985DA40-1329-4811-9421-6406B8BA4010} = {B5A26D0C-85C7-4A0C-B98B-F5949849FCB2}
+		{DAFDF62A-FCE6-4020-AB71-D97D4C614C8B} = {CA175335-1F1E-4EC2-8D48-265A6E1D6AC8}
+		{EDC74ADA-5EF0-44E4-929A-0887159F80A4} = {A6731631-E1FC-4BEC-A8B8-142F72084D86}
+		{047B3B52-EA7B-4D0C-8785-61209EB08B7B} = {A6731631-E1FC-4BEC-A8B8-142F72084D86}
+	EndGlobalSection
+EndGlobal
