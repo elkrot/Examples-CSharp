@@ -1,0 +1,31 @@
+﻿@model Thinktecture.Samples.ViewClaims
+
+@{
+    ViewBag.Title = "Client identity";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Client identity.</h1>
+            </hgroup>
+        </div>
+    </section>
+}
+
+<br />
+
+<table>
+    @foreach (var claim in Model)
+    {
+        <tr>
+            <td>
+                <strong>@claim.Type</strong>
+            </td>
+            <td>
+                <span>@claim.Value</span>
+            </td>
+        </tr>
+    }
+</table>

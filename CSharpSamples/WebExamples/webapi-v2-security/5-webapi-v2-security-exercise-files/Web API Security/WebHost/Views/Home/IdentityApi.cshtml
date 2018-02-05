@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Client identity";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Client identity.</h1>
+            </hgroup>
+        </div>
+    </section>
+}
+
+<br /> 
+
+<table data-bind="foreach: items">
+    <tr>
+        <td>
+            <strong data-bind="text: type"></strong>
+        </td>
+        <td>
+            <span data-bind="text: value"></span>
+        </td>
+    </tr>
+</table>
+
+@section scripts
+{
+    <script src="~/Scripts/knockout-2.2.0.js"></script>
+    
+    <script type="text/javascript">
+
+        $(function () {
+            var viewModel = new IdentityViewModel();
+
+            ko.applyBindings(viewModel);
+
+            $.get("../api/identity", function (items) {
+                $.each(items, function (idx, item) {
+                    viewModel.add(item.Type, item.Value);
+                });
+            }, "json");
+        });
+        
+        function IdentityViewModel() {
+            var self = this;
+
+            function Claim(root, type, value) {
+                var self = this;
+
+                self.type = ko.observable(type);
+                self.value = ko.observable(value);
+            };
+
+            self.items = ko.observableArray();
+
+            self.add = function (type, value) {
+                self.items.push(new Claim(self, type, value));
+            };
+        };
+
+    </script>
+}
