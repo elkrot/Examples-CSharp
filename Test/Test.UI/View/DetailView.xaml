@@ -40,7 +40,9 @@
                       >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Вопрос" Width="*"
-                                    Binding="{Binding QuestionTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                    Binding="{Binding QuestionTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                        ElementStyle="{StaticResource DataGridColumnStyle}"
+                                        EditingElementStyle="{StaticResource DataGridEditingColumnStyle}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
