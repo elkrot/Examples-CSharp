@@ -29,7 +29,7 @@
             </MenuItem>
         </Menu>
         <view:NavigationView DataContext="{Binding NavigationViewModel}" Grid.Row="1"/>
-        <ContentControl Grid.Column="1" Grid.Row="1" Content="{Binding TestDetailViewModel}"/>
+        <ContentControl Grid.Column="1" Grid.Row="1" Content="{Binding DetailViewModel}"/>
         
     </Grid>
 </Window>

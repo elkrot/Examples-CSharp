@@ -36,6 +36,11 @@ namespace Test.UI.Services.Repositories
             _context.Tests.Remove(model);
         }
 
+        public void RemoveQuestion(Question model)
+        {
+            _context.Questions.Remove(model);
+        }
+
         public async Task SaveAsync()
         {
             await _context.SaveChangesAsync();

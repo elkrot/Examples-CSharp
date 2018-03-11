@@ -10,5 +10,6 @@ namespace Test.UI.Services.Repositories
         bool HasChanges();
         void Add(TestEntity test);
         void Remove(TestEntity model);
+        void RemoveQuestion(Question model);
     }
 }

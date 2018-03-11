@@ -2,9 +2,10 @@
 
 namespace Test.UI.ViewModel
 {
-    public interface ITestDetailViewModel
+
+
+    public interface ITestDetailViewModel: IDetailViewModel
     {
-        Task LoadAsync(int? testId);
-        bool HasChanges { get; }
+        
     }
 }

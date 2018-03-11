@@ -14,13 +14,13 @@ namespace Test.UI.ViewModel
 
         public INavigationViewModel NavigationViewModel { get;}
         private Func<ITestDetailViewModel> _testDetailViewModelCreator { get;  }
-        private ITestDetailViewModel _testDetailViewModel;
+        private IDetailViewModel _detailViewModel;
         private IMessageDialogService _messageDialogService;
 
-        public ITestDetailViewModel TestDetailViewModel
+        public IDetailViewModel DetailViewModel
         {
-            get { return _testDetailViewModel; }
-            private set { _testDetailViewModel = value;
+            get { return _detailViewModel; }
+            private set { _detailViewModel = value;
                 OnPropertyChanged();
             }
         }
@@ -52,7 +52,7 @@ namespace Test.UI.ViewModel
 
         private void OnAfterTestDeleted(int obj)
         {
-            TestDetailViewModel = null;
+            DetailViewModel = null;
         }
 
         private void OnCreateNewTestExecute()
@@ -64,14 +64,14 @@ namespace Test.UI.ViewModel
 
         private async void OnOpenTestDetailView(int? testId)
         {
-            if(TestDetailViewModel!=null && TestDetailViewModel.HasChanges){
+            if(DetailViewModel!=null && DetailViewModel.HasChanges){
                 var result = _messageDialogService.ShowOKCancelDialog("?", "Q");
                 if (result == MessageDialogResult.Cancel) {
                     return;
                 }
             }
-            TestDetailViewModel = _testDetailViewModelCreator();
-            await TestDetailViewModel.LoadAsync(testId);
+           DetailViewModel = _testDetailViewModelCreator();
+            await DetailViewModel.LoadAsync(testId);
         }
     }
 

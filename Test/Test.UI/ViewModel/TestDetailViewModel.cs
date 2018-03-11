@@ -36,7 +36,7 @@ namespace Test.UI.ViewModel
                 , OnDeleteCanExecute);
 
             AddQuestionCommand = new DelegateCommand(OnAddQuestionExecute);
-            RemoveQuestionCommand = new DelegateCommand(OnRemoveQuestionCommand,
+            RemoveQuestionCommand = new DelegateCommand(OnRemoveQuestionExecute,
                 OnRemoveQuestionCanExecute);
 
             ProgrammingLanguages = new ObservableCollection<LookupItem>();
@@ -49,14 +49,25 @@ namespace Test.UI.ViewModel
             return SelectedQuestion != null;
         }
 
-        private void OnRemoveQuestionCommand()
+        private void OnRemoveQuestionExecute()
         {
-            //TODO
+            SelectedQuestion.PropertyChanged -= Wrapper_PropertyChanged;
+            _repository.RemoveQuestion(SelectedQuestion.Model);
+            Test.Model.Questions.Remove(SelectedQuestion.Model);
+            Questions.Remove(SelectedQuestion);
+            SelectedQuestion = null;
+            HasChanges = _repository.HasChanges();
+            ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
         }
 
         private void OnAddQuestionExecute()
         {
-           //TODO
+            var newQuestion = new QuestionWrapper(new Question());
+            newQuestion.PropertyChanged += Wrapper_PropertyChanged;
+            Questions.Add(newQuestion);
+            Test.Model.Questions.Add(newQuestion.Model);
+            newQuestion.QuestionTitle = "";
+
         }
 
         private async void OnDeleteExecute()
@@ -134,8 +145,10 @@ namespace Test.UI.ViewModel
             });
         }
 
-        public QuestionWrapper SelectedQuestion { get { return _selectedQuestion;
-            } set { _selectedQuestion = value; OnPropertyChanged();
+        public QuestionWrapper SelectedQuestion {
+            get { return _selectedQuestion;
+            } set { _selectedQuestion = value;
+                OnPropertyChanged();
                 ((DelegateCommand)RemoveQuestionCommand).RaiseCanExecuteChanged();
             } }
 
