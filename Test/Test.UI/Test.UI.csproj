@@ -96,15 +96,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Event\AfterSaveTestEvent.cs" />
-    <Compile Include="Event\AfterTestDeletedEvent.cs" />
-    <Compile Include="Event\OpenTestDetailViewEvent.cs" />
+    <Compile Include="Event\AfterDeletedEvent.cs" />
+    <Compile Include="Event\OpenDetailViewEvent.cs" />
     <Compile Include="Services\Lookups\ILookupDataService.cs" />
     <Compile Include="Services\Lookups\IProgrammingLanguageLookupDataService.cs" />
+    <Compile Include="Services\Repositories\GenericRepository.cs" />
+    <Compile Include="Services\Repositories\IGenericRepository.cs" />
     <Compile Include="Services\Repositories\ITestDataService.cs" />
     <Compile Include="Services\Lookups\LookupDataService.cs" />
     <Compile Include="Services\Repositories\TestRepository.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Startup\Bootstrap.cs" />
+    <Compile Include="ViewModel\DetailViewModelBase.cs" />
     <Compile Include="ViewModel\IDetailViewModel.cs" />
     <Compile Include="ViewModel\IMessageService.cs" />
     <Compile Include="ViewModel\INavigationViewModel.cs" />

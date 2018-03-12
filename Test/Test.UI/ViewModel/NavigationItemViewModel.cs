@@ -8,17 +8,20 @@ namespace Test.UI.ViewModel
     public class NavigationItemViewModel:ViewModelBase
     {
         
-        public NavigationItemViewModel(int id,string displayMember, IEventAggregator eventAggregator)
+        public NavigationItemViewModel(int id,string displayMember,string detailViewModelName
+            ,IEventAggregator eventAggregator)
         {
             Id = id;
             DisplayMember = displayMember;
-            OpenTestDetailViewCommand = new DelegateCommand(OnOpenTestDetailView);
+            OpenDetailViewCommand = new DelegateCommand(OnOpenDetailViewExecute);
+            _detailViewModelName = detailViewModelName;
             _eventAggregator = eventAggregator;
         }
 
         public int Id { get; }
         private string _displayMember;
         private IEventAggregator _eventAggregator;
+        private string _detailViewModelName;
 
         public string DisplayMember
         {
@@ -27,11 +30,12 @@ namespace Test.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        public ICommand OpenTestDetailViewCommand { get; }
+        public ICommand OpenDetailViewCommand { get; }
 
-        private void OnOpenTestDetailView()
+        private void OnOpenDetailViewExecute()
         {
-            _eventAggregator.GetEvent<OpenTestDetailViewEvent>().Publish(Id);
+            _eventAggregator.GetEvent<OpenDetailViewEvent>().Publish(
+                new OpenDetailViewEventArgs { Id=Id,ViewModelName= _detailViewModelName });
         }
 
 

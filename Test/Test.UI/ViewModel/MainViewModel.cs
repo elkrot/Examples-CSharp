@@ -40,29 +40,29 @@ namespace Test.UI.ViewModel
              _messageDialogService = messageDialogService;
             _testDetailViewModelCreator = testDetailViewModelCreator;
             _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<OpenTestDetailViewEvent>()
-    .Subscribe(OnOpenTestDetailView);
+            _eventAggregator.GetEvent<OpenDetailViewEvent>()
+    .Subscribe(OnOpenDetailView);
 
-            _eventAggregator.GetEvent<AfterTestDeletedEvent>()
-    .Subscribe(OnAfterTestDeleted);
+            _eventAggregator.GetEvent<AfterDeletedEvent>()
+    .Subscribe(OnAfterDeleted);
 
-            CreateNewTestCommand = new DelegateCommand(OnCreateNewTestExecute);
+            CreateNewCommand = new DelegateCommand<Type>(OnCreateNewExecute);
              NavigationViewModel = navigationViewModel;
         }
 
-        private void OnAfterTestDeleted(int obj)
+        private void OnAfterDeleted(AfterDeletedEventArgs obj)
         {
             DetailViewModel = null;
         }
 
-        private void OnCreateNewTestExecute()
+        private void OnCreateNewExecute(Type viewModelType)
         {
-            OnOpenTestDetailView(null);
+            OnOpenDetailView(new OpenDetailViewEventArgs { ViewModelName=viewModelType.Name});
         }
 
-        public ICommand CreateNewTestCommand {get;}
+        public ICommand CreateNewCommand {get;}
 
-        private async void OnOpenTestDetailView(int? testId)
+        private async void OnOpenDetailView(OpenDetailViewEventArgs args)
         {
             if(DetailViewModel!=null && DetailViewModel.HasChanges){
                 var result = _messageDialogService.ShowOKCancelDialog("?", "Q");
@@ -70,8 +70,14 @@ namespace Test.UI.ViewModel
                     return;
                 }
             }
-           DetailViewModel = _testDetailViewModelCreator();
-            await DetailViewModel.LoadAsync(testId);
+            switch (args.ViewModelName)
+            {
+                case nameof(TestDetailViewModel):
+                    DetailViewModel = _testDetailViewModelCreator();
+                    break;
+            }
+            
+            await DetailViewModel.LoadAsync(args.Id);
         }
     }
 

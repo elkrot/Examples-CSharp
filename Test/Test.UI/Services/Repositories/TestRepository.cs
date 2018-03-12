@@ -6,45 +6,24 @@ using Test.Model;
 
 namespace Test.UI.Services.Repositories
 {
-    public class TestRepository : ITestRepository
+   public class TestRepository : GenericRepository<TestEntity, TestDbDataContext>
     {
-        private TestDbDataContext _context;
-
-        public TestRepository(TestDbDataContext context)
+        public TestRepository(TestDbDataContext context) : base(context)
         {
-            _context = context;
         }
 
-        public void Add(TestEntity test)
+        public override async Task<TestEntity> GetByIdAsync(int testKey)
         {
-            _context.Tests.Add(test);
+            return await Context.Tests.Include(t => t.Questions).SingleAsync(t => t.TestKey == testKey);
         }
 
-        public async Task<TestEntity> GetByIdAsync(int testKey)
-        {
-           
-            return await _context.Tests.Include(t=>t.Questions).SingleAsync(t => t.TestKey == testKey);
-        }
-
-        public bool HasChanges()
-        {
-            return _context.ChangeTracker.HasChanges();
-        }
-
-        public void Remove(TestEntity model)
-        {
-            _context.Tests.Remove(model);
-        }
 
         public void RemoveQuestion(Question model)
         {
-            _context.Questions.Remove(model);
+            Context.Questions.Remove(model);
         }
 
-        public async Task SaveAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
+
     }
 }
  // await Task.Delay(5000);

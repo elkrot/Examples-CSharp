@@ -2,7 +2,7 @@
 
 namespace Test.UI.Event
 {
-    public class AfterTestSaveEvent:PubSubEvent<AfterTestSavedEventArgs>
+    public class AfterSaveEvent:PubSubEvent<AfterTestSavedEventArgs>
     {
     }
 
@@ -10,5 +10,6 @@ namespace Test.UI.Event
     {
         public int Id { get; set; }
         public string DisplayMember { get; set; }
+        public string ViewModelName { get; set; }
     }
 }

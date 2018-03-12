@@ -3,13 +3,11 @@ using Test.Model;
 
 namespace Test.UI.Services.Repositories
 {
-    public interface ITestRepository
+
+
+    public interface ITestRepository: IGenericRepository<TestEntity>
     {
-        Task<TestEntity> GetByIdAsync(int testKey);
-        Task SaveAsync();
-        bool HasChanges();
-        void Add(TestEntity test);
-        void Remove(TestEntity model);
+
         void RemoveQuestion(Question model);
     }
 }

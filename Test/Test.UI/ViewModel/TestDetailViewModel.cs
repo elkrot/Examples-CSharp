@@ -15,25 +15,22 @@ using System.Linq;
 
 namespace Test.UI.ViewModel
 {
-    public class TestDetailViewModel : ViewModelBase, ITestDetailViewModel
+    public class TestDetailViewModel : DetailViewModelBase, ITestDetailViewModel
     {
         private ITestRepository _repository;
-        private IEventAggregator _eventAggregator;
+      
         private TestWrapper _test;
 
         public TestDetailViewModel(ITestRepository repository, IEventAggregator eventAggregator
             , IMessageDialogService messageService
-            , IProgrammingLanguageLookupDataService programmingLanguageLookupDataService)
+            , IProgrammingLanguageLookupDataService programmingLanguageLookupDataService):base(eventAggregator)
+
         {
             _repository = repository;
-            _eventAggregator = eventAggregator;
+            
             _messageService = messageService;
 
             _programmingLanguageLookupDataService = programmingLanguageLookupDataService;
-
-            SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
-            DeleteCommand = new DelegateCommand(OnDeleteExecute
-                , OnDeleteCanExecute);
 
             AddQuestionCommand = new DelegateCommand(OnAddQuestionExecute);
             RemoveQuestionCommand = new DelegateCommand(OnRemoveQuestionExecute,
@@ -70,7 +67,7 @@ namespace Test.UI.ViewModel
 
         }
 
-        private async void OnDeleteExecute()
+        protected override async void OnDeleteExecute()
         {
             var result = _messageService.ShowOKCancelDialog("?", "title");
 
@@ -78,7 +75,8 @@ namespace Test.UI.ViewModel
             {
                 _repository.Remove(Test.Model);
                 await _repository.SaveAsync();
-                _eventAggregator.GetEvent<AfterTestDeletedEvent>().Publish(Test.TestKey);
+                RaiseDetailDelitedEvent(Test.TestKey);
+               
             }
 
         }
@@ -98,13 +96,12 @@ namespace Test.UI.ViewModel
             }
         }
 
-        public ICommand SaveCommand { get; }
-        public ICommand DeleteCommand { get; }
+
 
         public ICommand AddQuestionCommand { get; }
         public ICommand RemoveQuestionCommand { get; }
 
-        private bool OnSaveCanExecute()
+        protected override bool OnSaveCanExecute()
         {
             return Test != null && !Test.HasErrors
                 && Questions.All(q=>!q.HasErrors)
@@ -115,34 +112,19 @@ namespace Test.UI.ViewModel
         private IMessageDialogService _messageService;
 
 
-        public bool HasChanges
-        {
-            get { return _hasChanges; }
-            set
-            {
-                if (_hasChanges != value)
-                {
-                    _hasChanges = value;
-                    OnPropertyChanged();
-                    ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
-                }
-            }
-        }
+ 
 
         private IProgrammingLanguageLookupDataService _programmingLanguageLookupDataService;
         public ObservableCollection<LookupItem> ProgrammingLanguages { get; }
         public ObservableCollection<QuestionWrapper> Questions { get; }
 
-        private async void OnSaveExecute()
+        protected override async void OnSaveExecute()
         {
             await _repository.SaveAsync();
             HasChanges = _repository.HasChanges();
 
-            _eventAggregator.GetEvent<AfterTestSaveEvent>().Publish(new AfterTestSavedEventArgs
-            {
-                Id = Test.TestKey,
-                DisplayMember = $"{Test.TestTitle}"
-            });
+            RaiseDetailSavedEvent(Test.TestKey, $"{Test.TestTitle}");
+
         }
 
         public QuestionWrapper SelectedQuestion {
@@ -154,7 +136,7 @@ namespace Test.UI.ViewModel
 
         public QuestionWrapper _selectedQuestion { get; set; }
 
-        public async Task LoadAsync(int? testId)
+        public override async Task LoadAsync(int? testId)
         {
 
             var test = testId.HasValue ?

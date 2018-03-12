@@ -18,7 +18,7 @@
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding DisplayMember}" Command="{Binding OpenTestDetailViewCommand}">
+                        <Button Content="{Binding DisplayMember}" Command="{Binding OpenDetailViewCommand}">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid x:Name="grid">

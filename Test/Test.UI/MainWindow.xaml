@@ -25,7 +25,8 @@
         </Grid.ColumnDefinitions>
         <Menu Grid.ColumnSpan="2" FontSize="20">
             <MenuItem Header="Create">
-                <MenuItem Header="New Test" Command="{Binding CreateNewTestCommand}"/>
+                <MenuItem Header="New Test" Command="{Binding CreateNewCommand}"
+                          CommandParameter="{x:Type viewModel:TestDetailViewModel}"/>
             </MenuItem>
         </Menu>
         <view:NavigationView DataContext="{Binding NavigationViewModel}" Grid.Row="1"/>
