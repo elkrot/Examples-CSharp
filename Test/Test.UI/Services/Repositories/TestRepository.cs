@@ -6,7 +6,7 @@ using Test.Model;
 
 namespace Test.UI.Services.Repositories
 {
-   public class TestRepository : GenericRepository<TestEntity, TestDbDataContext>
+   public class TestRepository : IGenericRepository<TestEntity, TestDbDataContext>
     {
         public TestRepository(TestDbDataContext context) : base(context)
         {

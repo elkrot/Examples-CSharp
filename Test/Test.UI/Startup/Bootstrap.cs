@@ -29,6 +29,9 @@ namespace Test.UI.Startup
 
 
             builder.RegisterType<MessageDialogService>().As<IMessageDialogService>();
+
+            builder.RegisterType<MeetingRepository>().As<IMeetingRepository>();
+
             return builder.Build();
 
         }

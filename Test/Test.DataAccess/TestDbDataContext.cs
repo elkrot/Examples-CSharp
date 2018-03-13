@@ -8,6 +8,7 @@ namespace Test.DataAccess
         public DbSet<TestEntity> Tests { get; set; }
         public DbSet<ProgrammingLanguage> ProgrammingLanguages { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<Meeting> Meetings { get; set; }
 
         public TestDbDataContext():base("TestDbDataContext")
         {

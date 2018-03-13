@@ -12,6 +12,10 @@
         <DataTemplate DataType="{x:Type viewModel:TestDetailViewModel}">
             <view:DetailView/>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:MeetingDetailViewModel}">
+            <view:MeetingDetailView/>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>

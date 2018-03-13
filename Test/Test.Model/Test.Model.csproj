@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LookupItem.cs" />
+    <Compile Include="Meeting.cs" />
     <Compile Include="ProgrammingLanguage.cs" />
     <Compile Include="Questions.cs" />
     <Compile Include="Test.cs" />

@@ -3,13 +3,13 @@ using System.Threading.Tasks;
 
 namespace Test.UI.Services.Repositories
 {
-    public class GenericRepository<TEntity, TContext> : IGenericRepository<TEntity>
+    public class IGenericRepository<TEntity, TContext> : IGenericRepository<TEntity>
         where TEntity : class
         where TContext : DbContext
     {
         protected readonly TContext Context;
 
-        protected GenericRepository(TContext context)
+        protected IGenericRepository(TContext context)
         {
             this.Context = context;
         }

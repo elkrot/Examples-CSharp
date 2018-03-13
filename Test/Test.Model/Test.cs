@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using Test.Model;
 
 namespace Test.Model
 {
@@ -9,6 +10,7 @@ namespace Test.Model
         public TestEntity()
         {
             Questions = new Collection<Question>();
+            Meetings = new Collection<Meeting>();
         }
         [Key]
         public int TestKey { get; set; }
@@ -19,6 +21,8 @@ namespace Test.Model
         public int? FavoriteLanguageId { get; set; }
         public ProgrammingLanguage FavoriteLanguage { get; set; }
         public ICollection<Question> Questions { get; set; }
+
+        public ICollection<Meeting> Meetings { get; set; }
 
     }
 }
