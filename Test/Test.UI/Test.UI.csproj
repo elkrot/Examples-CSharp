@@ -123,6 +123,7 @@
     <Compile Include="Event\AfterDeletedEvent.cs" />
     <Compile Include="Event\OpenDetailViewEvent.cs" />
     <Compile Include="Services\Lookups\ILookupDataService.cs" />
+    <Compile Include="Services\Lookups\IMeetingLookupDataService.cs" />
     <Compile Include="Services\Lookups\IProgrammingLanguageLookupDataService.cs" />
     <Compile Include="Services\Repositories\GenericRepository.cs" />
     <Compile Include="Services\Repositories\IGenericRepository.cs" />

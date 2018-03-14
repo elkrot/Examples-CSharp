@@ -31,6 +31,9 @@
             <MenuItem Header="Create">
                 <MenuItem Header="New Test" Command="{Binding CreateNewCommand}"
                           CommandParameter="{x:Type viewModel:TestDetailViewModel}"/>
+                <MenuItem Header="New Meeting" Command="{Binding CreateNewCommand}"
+                          CommandParameter="{x:Type viewModel:MeetingDetailViewModel}"/>
+                
             </MenuItem>
         </Menu>
         <view:NavigationView DataContext="{Binding NavigationViewModel}" Grid.Row="1"/>

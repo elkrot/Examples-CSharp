@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Autofac.Features.Indexed;
+using Prism.Commands;
 using Prism.Events;
 using System;
 using System.Threading.Tasks;
@@ -13,9 +14,11 @@ namespace Test.UI.ViewModel
         private IEventAggregator _eventAggregator;
 
         public INavigationViewModel NavigationViewModel { get;}
-        private Func<ITestDetailViewModel> _testDetailViewModelCreator { get;  }
+        
         private IDetailViewModel _detailViewModel;
         private IMessageDialogService _messageDialogService;
+        
+        private IIndex<string, IDetailViewModel> _detailViewModelCreator;
 
         public IDetailViewModel DetailViewModel
         {
@@ -33,12 +36,14 @@ namespace Test.UI.ViewModel
 
         public MainViewModel(
             INavigationViewModel navigationViewModel
-            , Func<ITestDetailViewModel> testDetailViewModelCreator
+            , IIndex<string,IDetailViewModel> detailViewModelCreator
             , IEventAggregator eventAggregator
             , IMessageDialogService messageDialogService)
         {
              _messageDialogService = messageDialogService;
-            _testDetailViewModelCreator = testDetailViewModelCreator;
+
+            _detailViewModelCreator = detailViewModelCreator;
+
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<OpenDetailViewEvent>()
     .Subscribe(OnOpenDetailView);
@@ -70,12 +75,8 @@ namespace Test.UI.ViewModel
                     return;
                 }
             }
-            switch (args.ViewModelName)
-            {
-                case nameof(TestDetailViewModel):
-                    DetailViewModel = _testDetailViewModelCreator();
-                    break;
-            }
+
+            DetailViewModel = _detailViewModelCreator[args.ViewModelName];
             
             await DetailViewModel.LoadAsync(args.Id);
         }

@@ -9,7 +9,9 @@ using Test.Model;
 
 namespace Test.UI.Services.Lookups
 {
-   public class LookupDataService : ILookupDataService, IProgrammingLanguageLookupDataService
+   public class LookupDataService : ILookupDataService
+        , IProgrammingLanguageLookupDataService
+        ,IMeetingLookupDataService
     {
         private Func<TestDbDataContext> _contextCreator;
 
@@ -33,6 +35,16 @@ namespace Test.UI.Services.Lookups
             {
                 return await context.ProgrammingLanguages.AsNoTracking()
                     .Select(f => new LookupItem { Id = f.Id, DisplayMember = f.Name })
+                    .ToListAsync();
+            }
+        }
+
+        public async Task<List<LookupItem>> GetMeetingLookupAsync()
+        {
+            using (var context = _contextCreator())
+            {
+                return await context.Meetings.AsNoTracking()
+                    .Select(f => new LookupItem { Id = f.Id, DisplayMember = f.Title })
                     .ToListAsync();
             }
         }

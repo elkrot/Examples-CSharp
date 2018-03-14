@@ -21,8 +21,12 @@ namespace Test.UI.Startup
             builder.RegisterType<MainWindow>().AsSelf();
             builder.RegisterType<MainViewModel>().AsSelf();
             builder.RegisterType<NavigationViewModel>().As<INavigationViewModel>();
-            builder.RegisterType<TestDetailViewModel>().As<ITestDetailViewModel>();
-            
+            builder.RegisterType<TestDetailViewModel>()
+                .Keyed<IDetailViewModel>(nameof(TestDetailViewModel));
+            builder.RegisterType<MeetingDetailViewModel>()
+                .Keyed<IDetailViewModel>(nameof(MeetingDetailViewModel));
+                
+
 
             builder.RegisterType<LookupDataService>().AsImplementedInterfaces();
             builder.RegisterType<TestRepository>().As<ITestRepository>();
