@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Test.UI.View"
              xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:model="clr-namespace:Test.Model;assembly=Test.Model"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -26,6 +27,37 @@
 
         <Label Grid.Row="4" Margin="10 0" Content="End"/>
         <toolkit:DateTimePicker Grid.Row="5" Value="{Binding Meeting.DateFrom,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Grid Grid.Row="6" Margin="10">
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type model:TestEntity}">
+                    <TextBlock><Run Text="{Binding TestTitle}"/> </TextBlock>
+                </DataTemplate>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Added Friends"/>
+            <ListView Grid.Row="1" ItemsSource="{Binding AddedTests}"
+                SelectedItem="{Binding SelectedAddedTest}"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <Button Content="&lt;&lt;" Margin="10" Command="{Binding AddTestCommand}"/>
+                <Button Content="&gt;&gt;" Margin="10 0 10 10" Command="{Binding RemoveTestCommand}"/>
+            </StackPanel>
+
+            <Label Content="Available Friends" Grid.Column="2"/>
+            <ListView Grid.Row="1" ItemsSource="{Binding AvailableTests}"
+                SelectedItem="{Binding SelectedAvailableTest}" Grid.Column="2"/>
+        </Grid>
+
 
         <StackPanel Grid.Row="7" Orientation="Horizontal">
             <Button Content="Save" Width="75" Margin="0" Command="{Binding SaveCommand}"/>

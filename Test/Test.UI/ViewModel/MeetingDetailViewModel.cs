@@ -9,6 +9,8 @@ using Test.UI.Services.Repositories;
 using Test.UI.Wrapper;
 using Test.Model;
 using Prism.Commands;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Test.UI.ViewModel
 {
@@ -17,15 +19,56 @@ namespace Test.UI.ViewModel
         private IMeetingRepository _meetingRepository;
         private IMessageDialogService _messageDialogService;
 
+        private TestEntity _selectedAvailableTest;
+        private TestEntity _selectedAddedTest;
+
         public MeetingDetailViewModel(IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService,
             IMeetingRepository meetingRepository ) : base(eventAggregator)
         {
             _messageDialogService = messageDialogService;
             _meetingRepository = meetingRepository;
+
+            AvailableTests = new ObservableCollection<TestEntity>();
+            AddedTests = new ObservableCollection<TestEntity>();
+
+            AddTestCommand = new DelegateCommand(OnAddTestExecute,OnAddTestCanExecute); 
+            RemoveTestCommand = new DelegateCommand(OnRemoveTestExecute, OnRemoveTestCanExecute); 
+
+        }
+
+        private bool OnRemoveTestCanExecute()
+        {
+            return SelectedAddedTest != null;
+        }
+
+        private void OnRemoveTestExecute()
+        {
+            var testToRemove = SelectedAddedTest;
+            Meeting.Model.Tests.Remove(testToRemove);
+            AddedTests.Remove(testToRemove);
+            AvailableTests.Add(testToRemove);
+            HasChanges = _meetingRepository.HasChanges();
+            ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
+        }
+
+        private bool OnAddTestCanExecute()
+        {
+            return SelectedAvailableTest != null;
+        }
+
+        private void OnAddTestExecute()
+        {
+            var testToAdd = SelectedAvailableTest;
+            Meeting.Model.Tests.Add(testToAdd);
+            AddedTests.Add(testToAdd);
+            AvailableTests.Remove(testToAdd);
+            HasChanges = _meetingRepository.HasChanges();
+            ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
         }
 
         private MeetingWrapper  _meeting;
+        private List<TestEntity> _allTests;
 
         public MeetingWrapper Meeting
         {
@@ -37,12 +80,65 @@ namespace Test.UI.ViewModel
 
 
 
+        public ObservableCollection<TestEntity> AvailableTests { get; private set; }
+        public ICommand AddTestCommand { get; }
+        public ICommand RemoveTestCommand { get; }
+
+
+        
+
+        public TestEntity SelectedAvailableTest
+        {
+            get { return _selectedAvailableTest; }
+            set { _selectedAvailableTest = value;
+                OnPropertyChanged();
+                ((DelegateCommand)AddTestCommand).RaiseCanExecuteChanged();
+            }
+        }
+
+        public TestEntity SelectedAddedTest
+        {
+            get { return _selectedAddedTest; }
+            set
+            {
+                _selectedAddedTest = value;
+                OnPropertyChanged();
+                ((DelegateCommand)RemoveTestCommand).RaiseCanExecuteChanged();
+            }
+        }
+
+        public ObservableCollection<TestEntity> AddedTests { get; private set; }
+
         public override async Task LoadAsync(int? meetingId)
         {
             var meeting = meetingId.HasValue
                 ? await _meetingRepository.GetByIdAsync(meetingId.Value)
                 : CreateNewMeeting();
             InitializeMeeting(meeting);
+
+            _allTests = await _meetingRepository.GetAllTestAsync();
+            SetupPicklist();
+
+        }
+
+        private void SetupPicklist()
+        {
+            var meetingTestIds = Meeting.Model.Tests.Select(f => f.TestKey).ToList();
+            var addedTests = _allTests.Where(f => meetingTestIds.Contains(f.TestKey)).OrderBy(f => f.TestTitle);
+            var availableTests = _allTests.Except(addedTests).OrderBy(f => f.TestTitle);
+
+            AddedTests.Clear();
+            AvailableTests.Clear();
+
+            foreach (var availableTest in availableTests)
+            {
+                AvailableTests.Add(availableTest);
+            }
+            foreach (var addedTest in addedTests)
+            {
+                AddedTests.Add(addedTest);
+            }
+
         }
 
         private void InitializeMeeting(Meeting meeting)

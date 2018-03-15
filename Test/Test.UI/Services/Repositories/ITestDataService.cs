@@ -9,5 +9,6 @@ namespace Test.UI.Services.Repositories
     {
 
         void RemoveQuestion(Question model);
+        Task<bool> HasMeetingAsync(int testId);
     }
 }

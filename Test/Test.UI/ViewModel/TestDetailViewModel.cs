@@ -69,6 +69,11 @@ namespace Test.UI.ViewModel
 
         protected override async void OnDeleteExecute()
         {
+            if (await _repository.HasMeetingAsync(Test.TestKey)) {
+                _messageService.ShowInfoDialog("!!!");
+                return;
+            }
+
             var result = _messageService.ShowOKCancelDialog("?", "title");
 
             if (result == MessageDialogResult.OK)
