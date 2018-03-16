@@ -45,6 +45,23 @@ namespace Test.UI.ViewModel
                 }
             }
         }
+
+        private int _id;
+
+        public int Id
+        {
+            get
+            {
+                return _id;
+            }
+
+            protected set
+            {
+                _id = value;
+
+            }
+        }
+
         protected virtual void RaiseDetailDelitedEvent(int modelId)
         {
             EventAggregator.GetEvent<AfterDeletedEvent>().Publish(

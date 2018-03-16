@@ -114,7 +114,10 @@ namespace Test.UI.ViewModel
             var meeting = meetingId.HasValue
                 ? await _meetingRepository.GetByIdAsync(meetingId.Value)
                 : CreateNewMeeting();
+            Id = meeting.Id;
+
             InitializeMeeting(meeting);
+
 
             _allTests = await _meetingRepository.GetAllTestAsync();
             SetupPicklist();
@@ -194,6 +197,7 @@ namespace Test.UI.ViewModel
         {
             await _meetingRepository.SaveAsync();
             HasChanges = _meetingRepository.HasChanges();
+            Id = Meeting.Id;
             RaiseDetailSavedEvent(Meeting.Id, Meeting.Title);
         }
     }

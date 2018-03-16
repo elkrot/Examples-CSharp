@@ -127,7 +127,7 @@ namespace Test.UI.ViewModel
         {
             await _repository.SaveAsync();
             HasChanges = _repository.HasChanges();
-
+            Id = Test.TestKey;
             RaiseDetailSavedEvent(Test.TestKey, $"{Test.TestTitle}");
 
         }
@@ -148,6 +148,7 @@ namespace Test.UI.ViewModel
                 await _repository.GetByIdAsync(testId.Value) :
                 CreateNewTest();
 
+            Id = test.TestKey;
             InitializedFriend(test);
             InitializeQuestions(test.Questions);
             await LoadProgrammingLanguagesLookup();

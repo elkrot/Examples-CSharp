@@ -2,6 +2,8 @@
 using Prism.Commands;
 using Prism.Events;
 using System;
+using System.Linq;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Test.UI.Event;
@@ -13,17 +15,22 @@ namespace Test.UI.ViewModel
     {
         private IEventAggregator _eventAggregator;
 
-        public INavigationViewModel NavigationViewModel { get;}
-        
-        private IDetailViewModel _detailViewModel;
+        public INavigationViewModel NavigationViewModel { get; }
+
+        private IDetailViewModel _selectedDetailViewModel;
         private IMessageDialogService _messageDialogService;
-        
+
         private IIndex<string, IDetailViewModel> _detailViewModelCreator;
 
-        public IDetailViewModel DetailViewModel
+
+        public ObservableCollection<IDetailViewModel> DetailViewModels { get; }
+
+        public IDetailViewModel SelectedDetailViewModel
         {
-            get { return _detailViewModel; }
-            private set { _detailViewModel = value;
+            get { return _selectedDetailViewModel; }
+            set
+            {
+                _selectedDetailViewModel = value;
                 OnPropertyChanged();
             }
         }
@@ -36,14 +43,14 @@ namespace Test.UI.ViewModel
 
         public MainViewModel(
             INavigationViewModel navigationViewModel
-            , IIndex<string,IDetailViewModel> detailViewModelCreator
+            , IIndex<string, IDetailViewModel> detailViewModelCreator
             , IEventAggregator eventAggregator
             , IMessageDialogService messageDialogService)
         {
-             _messageDialogService = messageDialogService;
+            _messageDialogService = messageDialogService;
 
             _detailViewModelCreator = detailViewModelCreator;
-
+            DetailViewModels = new ObservableCollection<IDetailViewModel>();
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<OpenDetailViewEvent>()
     .Subscribe(OnOpenDetailView);
@@ -52,33 +59,40 @@ namespace Test.UI.ViewModel
     .Subscribe(OnAfterDeleted);
 
             CreateNewCommand = new DelegateCommand<Type>(OnCreateNewExecute);
-             NavigationViewModel = navigationViewModel;
+            NavigationViewModel = navigationViewModel;
         }
 
-        private void OnAfterDeleted(AfterDeletedEventArgs obj)
+        private void OnAfterDeleted(AfterDeletedEventArgs args)
         {
-            DetailViewModel = null;
+            var detailViewModel = DetailViewModels
+                .SingleOrDefault(vm => vm.Id == args.Id
+                && vm.GetType().Name == args.ViewModelName);
+
+            if (detailViewModel != null) {
+                DetailViewModels.Remove(detailViewModel);
+            }
         }
 
         private void OnCreateNewExecute(Type viewModelType)
         {
-            OnOpenDetailView(new OpenDetailViewEventArgs { ViewModelName=viewModelType.Name});
+            OnOpenDetailView(new OpenDetailViewEventArgs { ViewModelName = viewModelType.Name });
         }
 
-        public ICommand CreateNewCommand {get;}
+        public ICommand CreateNewCommand { get; }
 
         private async void OnOpenDetailView(OpenDetailViewEventArgs args)
         {
-            if(DetailViewModel!=null && DetailViewModel.HasChanges){
-                var result = _messageDialogService.ShowOKCancelDialog("?", "Q");
-                if (result == MessageDialogResult.Cancel) {
-                    return;
-                }
-            }
+            var detailViewModel = DetailViewModels
+                 .SingleOrDefault(vm => vm.Id == args.Id
+                 && vm.GetType().Name == args.ViewModelName);
 
-            DetailViewModel = _detailViewModelCreator[args.ViewModelName];
-            
-            await DetailViewModel.LoadAsync(args.Id);
+            if (detailViewModel == null)
+            {
+                detailViewModel = _detailViewModelCreator[args.ViewModelName];
+                await detailViewModel.LoadAsync(args.Id);
+                DetailViewModels.Add(detailViewModel);
+            }
+            SelectedDetailViewModel = detailViewModel;
         }
     }
 

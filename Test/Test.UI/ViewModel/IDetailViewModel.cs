@@ -6,5 +6,6 @@ namespace Test.UI.ViewModel
     {
         Task LoadAsync(int? id);
         bool HasChanges { get; }
+        int Id { get;  }
     }
 }
