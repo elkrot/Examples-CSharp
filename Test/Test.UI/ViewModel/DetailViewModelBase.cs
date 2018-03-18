@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Test.UI.Event;
+using Test.UI.View.Services;
 
 namespace Test.UI.ViewModel
 {
@@ -17,15 +18,37 @@ namespace Test.UI.ViewModel
 
         public ICommand SaveCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }
+        public IMessageDialogService MessageDialogService { get;  }
 
-        public DetailViewModelBase(IEventAggregator eventAggregator)
+        public DetailViewModelBase(IEventAggregator eventAggregator
+            ,IMessageDialogService _messageDialogService)
         {
             EventAggregator = eventAggregator;
+            MessageDialogService = _messageDialogService;
             SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
             DeleteCommand = new DelegateCommand(OnDeleteExecute);
+            CloseDetailViewModelCommand = new DelegateCommand(OnCloseDetailViewExecute);
         }
 
-        public abstract Task LoadAsync(int? id);
+        protected virtual void OnCloseDetailViewExecute()
+        {
+            if (HasChanges) {
+                var result = MessageDialogService.ShowOKCancelDialog(
+                    "?","title"
+                    );
+                if (result == MessageDialogResult.Cancel) {
+                    return;
+                }
+            }
+            EventAggregator.GetEvent<AfterDetailClosedEvent>()
+                .Publish(new AfterDtailClosedEventArgs {
+                    Id = this.Id
+                    , ViewModelName = this.GetType().Name
+                });
+            
+        }
+
+        public abstract Task LoadAsync(int id);
 
         protected abstract void OnDeleteExecute();
 
@@ -61,6 +84,25 @@ namespace Test.UI.ViewModel
 
             }
         }
+
+
+        private string _title;
+
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+
+            protected set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand CloseDetailViewModelCommand { get; private set; }
 
         protected virtual void RaiseDetailDelitedEvent(int modelId)
         {

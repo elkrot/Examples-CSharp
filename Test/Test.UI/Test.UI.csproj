@@ -119,6 +119,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Event\AfterDetailClosedEvent.cs" />
+    <Compile Include="Event\AfterDetailDelitedEvent.cs" />
+    <Compile Include="Event\AfterDetailSavedEvent.cs" />
     <Compile Include="Event\AfterSaveTestEvent.cs" />
     <Compile Include="Event\AfterDeletedEvent.cs" />
     <Compile Include="Event\OpenDetailViewEvent.cs" />

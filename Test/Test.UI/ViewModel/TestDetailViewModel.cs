@@ -23,12 +23,13 @@ namespace Test.UI.ViewModel
 
         public TestDetailViewModel(ITestRepository repository, IEventAggregator eventAggregator
             , IMessageDialogService messageService
-            , IProgrammingLanguageLookupDataService programmingLanguageLookupDataService):base(eventAggregator)
+            , IProgrammingLanguageLookupDataService programmingLanguageLookupDataService)
+            :base(eventAggregator,messageService)
 
         {
             _repository = repository;
             
-            _messageService = messageService;
+           
 
             _programmingLanguageLookupDataService = programmingLanguageLookupDataService;
 
@@ -70,11 +71,11 @@ namespace Test.UI.ViewModel
         protected override async void OnDeleteExecute()
         {
             if (await _repository.HasMeetingAsync(Test.TestKey)) {
-                _messageService.ShowInfoDialog("!!!");
+                MessageDialogService.ShowInfoDialog("!!!");
                 return;
             }
 
-            var result = _messageService.ShowOKCancelDialog("?", "title");
+            var result = MessageDialogService.ShowOKCancelDialog("?", "title");
 
             if (result == MessageDialogResult.OK)
             {
@@ -114,10 +115,6 @@ namespace Test.UI.ViewModel
         }
 
         private bool _hasChanges;
-        private IMessageDialogService _messageService;
-
-
- 
 
         private IProgrammingLanguageLookupDataService _programmingLanguageLookupDataService;
         public ObservableCollection<LookupItem> ProgrammingLanguages { get; }
@@ -141,15 +138,15 @@ namespace Test.UI.ViewModel
 
         public QuestionWrapper _selectedQuestion { get; set; }
 
-        public override async Task LoadAsync(int? testId)
+        public override async Task LoadAsync(int testId)
         {
 
-            var test = testId.HasValue ?
-                await _repository.GetByIdAsync(testId.Value) :
+            var test = testId>0 ?
+                await _repository.GetByIdAsync(testId) :
                 CreateNewTest();
 
-            Id = test.TestKey;
-            InitializedFriend(test);
+            Id = testId;
+            InitializedTest(test);
             InitializeQuestions(test.Questions);
             await LoadProgrammingLanguagesLookup();
         }
@@ -179,7 +176,7 @@ namespace Test.UI.ViewModel
             }
         }
 
-        private void InitializedFriend(TestEntity test)
+        private void InitializedTest(TestEntity test)
         {
             Test = new TestWrapper(test);
             Test.PropertyChanged += (s, e) =>
@@ -193,6 +190,10 @@ namespace Test.UI.ViewModel
                 {
                     ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
                 }
+
+                if (e.PropertyName == nameof(Test.TestTitle)) {
+                    SetTitle();
+                }
             };
             ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
 
@@ -200,6 +201,11 @@ namespace Test.UI.ViewModel
             {
                 Test.TestTitle = "";
             }
+        }
+
+        private void SetTitle()
+        {
+            Title = $"{Test.TestTitle}";
         }
 
         private async Task LoadProgrammingLanguagesLookup()

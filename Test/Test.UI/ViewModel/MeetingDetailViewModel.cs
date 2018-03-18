@@ -11,23 +11,25 @@ using Test.Model;
 using Prism.Commands;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Test.UI.Event;
 
 namespace Test.UI.ViewModel
 {
     public class MeetingDetailViewModel : DetailViewModelBase, IMeetingDetailViewModel
     {
         private IMeetingRepository _meetingRepository;
-        private IMessageDialogService _messageDialogService;
+
 
         private TestEntity _selectedAvailableTest;
         private TestEntity _selectedAddedTest;
 
         public MeetingDetailViewModel(IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService,
-            IMeetingRepository meetingRepository ) : base(eventAggregator)
+            IMeetingRepository meetingRepository ) : base(eventAggregator,messageDialogService)
         {
-            _messageDialogService = messageDialogService;
             _meetingRepository = meetingRepository;
+            eventAggregator.GetEvent<AfterDetailSavedEvent>().Subscribe(AfterDetailSaved);
+            eventAggregator.GetEvent<AfterDetailDelitedEvent>().Subscribe(AfterDetailDelited);
 
             AvailableTests = new ObservableCollection<TestEntity>();
             AddedTests = new ObservableCollection<TestEntity>();
@@ -35,6 +37,23 @@ namespace Test.UI.ViewModel
             AddTestCommand = new DelegateCommand(OnAddTestExecute,OnAddTestCanExecute); 
             RemoveTestCommand = new DelegateCommand(OnRemoveTestExecute, OnRemoveTestCanExecute); 
 
+        }
+
+        private async void AfterDetailDelited(AfterDtailDelitedEventArgs args)
+        {
+            if (args.ViewModelName == nameof(TestDetailViewModel)) {
+                _allTests = await _meetingRepository.GetAllTestAsync();
+                SetupPicklist();
+            }
+        }
+
+        private async void AfterDetailSaved(AfterDtailSavedEventArgs args)
+        {
+            if (args.ViewModelName==nameof(TestDetailViewModel)) {
+                await _meetingRepository.ReloadTestAsync(args.Id);
+                _allTests = await _meetingRepository.GetAllTestAsync();
+                SetupPicklist();
+            }
         }
 
         private bool OnRemoveTestCanExecute()
@@ -109,12 +128,12 @@ namespace Test.UI.ViewModel
 
         public ObservableCollection<TestEntity> AddedTests { get; private set; }
 
-        public override async Task LoadAsync(int? meetingId)
+        public override async Task LoadAsync(int meetingId)
         {
-            var meeting = meetingId.HasValue
-                ? await _meetingRepository.GetByIdAsync(meetingId.Value)
+            var meeting = meetingId>0
+                ? await _meetingRepository.GetByIdAsync(meetingId)
                 : CreateNewMeeting();
-            Id = meeting.Id;
+            Id = meetingId;
 
             InitializeMeeting(meeting);
 
@@ -157,13 +176,22 @@ namespace Test.UI.ViewModel
                 {
                     ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
                 }
-                    
-            };
+                if (e.PropertyName == nameof(Meeting.Title))
+                {
+                    SetTitle();
+                }
+
+                };
             ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
 
             if (Meeting.Id == 0) {
                 Meeting.Title = "";
             }
+        }
+
+        private void SetTitle()
+        {
+            Title = Meeting.Title;
         }
 
         private Meeting CreateNewMeeting()
@@ -179,7 +207,7 @@ namespace Test.UI.ViewModel
 
         protected override void OnDeleteExecute()
         {
-            var result = _messageDialogService.ShowOKCancelDialog($"{Meeting.Title}?", "");
+            var result = MessageDialogService.ShowOKCancelDialog($"{Meeting.Title}?", "");
             if (result == MessageDialogResult.OK)
             {
                 _meetingRepository.Remove(Meeting.Model);

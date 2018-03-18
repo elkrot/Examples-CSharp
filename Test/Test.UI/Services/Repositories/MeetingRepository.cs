@@ -4,6 +4,7 @@ using Test.DataAccess;
 using Test.Model;
 using System.Data.Entity;
 using System.Collections.Generic;
+using System;
 
 namespace Test.UI.Services.Repositories
 {
@@ -20,6 +21,15 @@ namespace Test.UI.Services.Repositories
         public async Task<List<TestEntity>> GetAllTestAsync() {
             return await Context.Set<TestEntity>()
                 .ToListAsync();
+        }
+
+        public async Task ReloadTestAsync(int? testId)
+        {
+            var dbEntityEntry = Context.ChangeTracker.Entries<TestEntity>()
+                .SingleOrDefault(db=>db.Entity.TestKey==testId);
+            if (dbEntityEntry != null) {
+                await dbEntityEntry.ReloadAsync();
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Test.UI.ViewModel
 
 
         public ObservableCollection<IDetailViewModel> DetailViewModels { get; }
-
+        private int nextNewItemId=0;
         public IDetailViewModel SelectedDetailViewModel
         {
             get { return _selectedDetailViewModel; }
@@ -58,24 +58,39 @@ namespace Test.UI.ViewModel
             _eventAggregator.GetEvent<AfterDeletedEvent>()
     .Subscribe(OnAfterDeleted);
 
+            _eventAggregator.GetEvent<AfterDetailClosedEvent>()
+.Subscribe(OnAfterDetailClosed);
+
             CreateNewCommand = new DelegateCommand<Type>(OnCreateNewExecute);
             NavigationViewModel = navigationViewModel;
         }
 
+        private void OnAfterDetailClosed(AfterDtailClosedEventArgs args)
+        {
+            RemoveDetailViewModel(args.Id, args.ViewModelName);
+        }
+
         private void OnAfterDeleted(AfterDeletedEventArgs args)
         {
-            var detailViewModel = DetailViewModels
-                .SingleOrDefault(vm => vm.Id == args.Id
-                && vm.GetType().Name == args.ViewModelName);
+            RemoveDetailViewModel(args.Id,args.ViewModelName);
+        }
 
-            if (detailViewModel != null) {
+        private void RemoveDetailViewModel(int? id, string viewModelName)
+        {
+        
+            var detailViewModel = DetailViewModels
+                .SingleOrDefault(vm => vm.Id == id
+                && vm.GetType().Name == viewModelName);
+
+            if (detailViewModel != null)
+            {
                 DetailViewModels.Remove(detailViewModel);
             }
         }
 
         private void OnCreateNewExecute(Type viewModelType)
         {
-            OnOpenDetailView(new OpenDetailViewEventArgs { ViewModelName = viewModelType.Name });
+            OnOpenDetailView(new OpenDetailViewEventArgs { Id=nextNewItemId--,ViewModelName = viewModelType.Name });
         }
 
         public ICommand CreateNewCommand { get; }
