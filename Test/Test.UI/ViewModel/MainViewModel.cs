@@ -62,7 +62,15 @@ namespace Test.UI.ViewModel
 .Subscribe(OnAfterDetailClosed);
 
             CreateNewCommand = new DelegateCommand<Type>(OnCreateNewExecute);
+            OpenSingleDetailViewCommand = new DelegateCommand<Type>(OnOpenSingleDetailViewExecute);
+
             NavigationViewModel = navigationViewModel;
+        }
+
+        private void OnOpenSingleDetailViewExecute(Type viewModelType)
+        {
+            OnOpenDetailView(new OpenDetailViewEventArgs
+            { Id = -1, ViewModelName = viewModelType.Name });
         }
 
         private void OnAfterDetailClosed(AfterDtailClosedEventArgs args)
@@ -90,10 +98,13 @@ namespace Test.UI.ViewModel
 
         private void OnCreateNewExecute(Type viewModelType)
         {
-            OnOpenDetailView(new OpenDetailViewEventArgs { Id=nextNewItemId--,ViewModelName = viewModelType.Name });
+            OnOpenDetailView(new OpenDetailViewEventArgs
+            { Id=nextNewItemId--,ViewModelName = viewModelType.Name });
         }
 
         public ICommand CreateNewCommand { get; }
+
+        public ICommand OpenSingleDetailViewCommand { get; }
 
         private async void OnOpenDetailView(OpenDetailViewEventArgs args)
         {

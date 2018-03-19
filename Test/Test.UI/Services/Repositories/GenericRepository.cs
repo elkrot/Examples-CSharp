@@ -1,21 +1,28 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace Test.UI.Services.Repositories
 {
-    public class IGenericRepository<TEntity, TContext> : IGenericRepository<TEntity>
+    public class GenericRepository<TEntity, TContext> : IGenericRepository<TEntity>
         where TEntity : class
         where TContext : DbContext
     {
         protected readonly TContext Context;
 
-        protected IGenericRepository(TContext context)
+        protected GenericRepository(TContext context)
         {
             this.Context = context;
         }
         public void Add(TEntity model)
         {
             this.Context.Set<TEntity>().Add(model);
+        }
+
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        {
+            return await Context.Set<TEntity>().ToListAsync();
         }
 
         public virtual async Task<TEntity> GetByIdAsync(int id)

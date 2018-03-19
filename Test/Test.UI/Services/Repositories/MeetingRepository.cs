@@ -8,7 +8,7 @@ using System;
 
 namespace Test.UI.Services.Repositories
 {
-    class MeetingRepository : IGenericRepository<Meeting, TestDbDataContext>, IMeetingRepository
+    class MeetingRepository : GenericRepository<Meeting, TestDbDataContext>, IMeetingRepository
     {
         public MeetingRepository(TestDbDataContext context) : base(context)
         {

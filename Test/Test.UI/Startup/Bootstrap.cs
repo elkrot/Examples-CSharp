@@ -25,7 +25,8 @@ namespace Test.UI.Startup
                 .Keyed<IDetailViewModel>(nameof(TestDetailViewModel));
             builder.RegisterType<MeetingDetailViewModel>()
                 .Keyed<IDetailViewModel>(nameof(MeetingDetailViewModel));
-                
+            builder.RegisterType<ProgrammingLanguageDetailViewModel>()
+            .Keyed<IDetailViewModel>(nameof(ProgrammingLanguageDetailViewModel));
 
 
             builder.RegisterType<LookupDataService>().AsImplementedInterfaces();
@@ -35,6 +36,8 @@ namespace Test.UI.Startup
             builder.RegisterType<MessageDialogService>().As<IMessageDialogService>();
 
             builder.RegisterType<MeetingRepository>().As<IMeetingRepository>();
+
+            builder.RegisterType<ProgrammingLanguageRepository>().As<IProgrammingLanguageRepository>();
 
             return builder.Build();
 
