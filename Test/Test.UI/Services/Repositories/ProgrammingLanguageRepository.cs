@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,13 @@ namespace Test.UI.Services.Repositories
     {
         public ProgrammingLanguageRepository(TestDbDataContext context) : base(context)
         {
+            
+        }
+
+        public async Task<bool> IsReferenceByTestAsync(int programmingLanguageId)
+        {
+            return await Context.Tests.AsNoTracking()
+                .AllAsync(f => f.FavoriteLanguageId == programmingLanguageId);
         }
     }
 }

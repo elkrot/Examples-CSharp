@@ -18,6 +18,9 @@ namespace Test.Model
         [StringLength(50)]
         public string TestTitle { get; set; }
 
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
         public int? FavoriteLanguageId { get; set; }
         public ProgrammingLanguage FavoriteLanguage { get; set; }
         public ICollection<Question> Questions { get; set; }

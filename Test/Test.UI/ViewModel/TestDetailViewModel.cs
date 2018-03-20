@@ -12,26 +12,26 @@ using System.Collections.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity.Infrastructure;
 
 namespace Test.UI.ViewModel
 {
     public class TestDetailViewModel : DetailViewModelBase, ITestDetailViewModel
     {
         private ITestRepository _repository;
-      
+
         private TestWrapper _test;
 
         public TestDetailViewModel(ITestRepository repository, IEventAggregator eventAggregator
             , IMessageDialogService messageService
             , IProgrammingLanguageLookupDataService programmingLanguageLookupDataService)
-            :base(eventAggregator,messageService)
+            : base(eventAggregator, messageService)
 
         {
             _repository = repository;
-            
-           
-
             _programmingLanguageLookupDataService = programmingLanguageLookupDataService;
+
+            eventAggregator.GetEvent<AfterCollectionSavedEvent>().Subscribe(AfterCollectionSaved);
 
             AddQuestionCommand = new DelegateCommand(OnAddQuestionExecute);
             RemoveQuestionCommand = new DelegateCommand(OnRemoveQuestionExecute,
@@ -40,6 +40,14 @@ namespace Test.UI.ViewModel
             ProgrammingLanguages = new ObservableCollection<LookupItem>();
             Questions = new ObservableCollection<QuestionWrapper>();
 
+        }
+
+        private async void AfterCollectionSaved(AfterCollectionSavedEventArgs args)
+        {
+            if (args.ViewModelName == nameof(ProgrammingLanguageDetailViewModel))
+            {
+                await LoadProgrammingLanguagesLookup();
+            }
         }
 
         private bool OnRemoveQuestionCanExecute()
@@ -70,7 +78,8 @@ namespace Test.UI.ViewModel
 
         protected override async void OnDeleteExecute()
         {
-            if (await _repository.HasMeetingAsync(Test.TestKey)) {
+            if (await _repository.HasMeetingAsync(Test.TestKey))
+            {
                 MessageDialogService.ShowInfoDialog("!!!");
                 return;
             }
@@ -82,7 +91,7 @@ namespace Test.UI.ViewModel
                 _repository.Remove(Test.Model);
                 await _repository.SaveAsync();
                 RaiseDetailDelitedEvent(Test.TestKey);
-               
+
             }
 
         }
@@ -110,11 +119,11 @@ namespace Test.UI.ViewModel
         protected override bool OnSaveCanExecute()
         {
             return Test != null && !Test.HasErrors
-                && Questions.All(q=>!q.HasErrors)
+                && Questions.All(q => !q.HasErrors)
                 && HasChanges;
         }
 
-        private bool _hasChanges;
+
 
         private IProgrammingLanguageLookupDataService _programmingLanguageLookupDataService;
         public ObservableCollection<LookupItem> ProgrammingLanguages { get; }
@@ -122,26 +131,34 @@ namespace Test.UI.ViewModel
 
         protected override async void OnSaveExecute()
         {
-            await _repository.SaveAsync();
-            HasChanges = _repository.HasChanges();
-            Id = Test.TestKey;
-            RaiseDetailSavedEvent(Test.TestKey, $"{Test.TestTitle}");
+            await SaveWithOptimisticConcurrencyAsync(_repository.SaveAsync, () => {
 
+                HasChanges = _repository.HasChanges();
+                Id = Test.TestKey;
+                RaiseDetailSavedEvent(Test.TestKey, $"{Test.TestTitle}");
+            });
         }
 
-        public QuestionWrapper SelectedQuestion {
-            get { return _selectedQuestion;
-            } set { _selectedQuestion = value;
+        public QuestionWrapper SelectedQuestion
+        {
+            get
+            {
+                return _selectedQuestion;
+            }
+            set
+            {
+                _selectedQuestion = value;
                 OnPropertyChanged();
                 ((DelegateCommand)RemoveQuestionCommand).RaiseCanExecuteChanged();
-            } }
+            }
+        }
 
         public QuestionWrapper _selectedQuestion { get; set; }
 
         public override async Task LoadAsync(int testId)
         {
 
-            var test = testId>0 ?
+            var test = testId > 0 ?
                 await _repository.GetByIdAsync(testId) :
                 CreateNewTest();
 
@@ -168,10 +185,12 @@ namespace Test.UI.ViewModel
 
         private void Wrapper_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (!HasChanges) {
+            if (!HasChanges)
+            {
                 HasChanges = _repository.HasChanges();
             }
-            if (e.PropertyName == nameof(QuestionWrapper.HasErrors)) {
+            if (e.PropertyName == nameof(QuestionWrapper.HasErrors))
+            {
                 ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
             }
         }
@@ -191,7 +210,8 @@ namespace Test.UI.ViewModel
                     ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
                 }
 
-                if (e.PropertyName == nameof(Test.TestTitle)) {
+                if (e.PropertyName == nameof(Test.TestTitle))
+                {
                     SetTitle();
                 }
             };
