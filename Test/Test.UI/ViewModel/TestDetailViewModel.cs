@@ -80,11 +80,11 @@ namespace Test.UI.ViewModel
         {
             if (await _repository.HasMeetingAsync(Test.TestKey))
             {
-                MessageDialogService.ShowInfoDialog("!!!");
+                await MessageDialogService.ShowInfoDialogAsync("!!!");
                 return;
             }
 
-            var result = MessageDialogService.ShowOKCancelDialog("?", "title");
+            var result = await MessageDialogService.ShowOKCancelDialogAsync("?", "title");
 
             if (result == MessageDialogResult.OK)
             {

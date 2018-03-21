@@ -52,6 +52,7 @@ namespace Test.UI.ViewModel
             _detailViewModelCreator = detailViewModelCreator;
             DetailViewModels = new ObservableCollection<IDetailViewModel>();
             _eventAggregator = eventAggregator;
+
             _eventAggregator.GetEvent<OpenDetailViewEvent>()
     .Subscribe(OnOpenDetailView);
 
@@ -59,7 +60,7 @@ namespace Test.UI.ViewModel
     .Subscribe(OnAfterDeleted);
 
             _eventAggregator.GetEvent<AfterDetailClosedEvent>()
-.Subscribe(OnAfterDetailClosed);
+    .Subscribe(OnAfterDetailClosed);
 
             CreateNewCommand = new DelegateCommand<Type>(OnCreateNewExecute);
             OpenSingleDetailViewCommand = new DelegateCommand<Type>(OnOpenSingleDetailViewExecute);
@@ -121,7 +122,7 @@ await detailViewModel.LoadAsync(args.Id);
                 }
                 catch 
                 {
-                    _messageDialogService.ShowInfoDialog("Info");
+                   await _messageDialogService.ShowInfoDialogAsync("Info");
                     await NavigationViewModel.LoadAsync();
                     return;
                 }

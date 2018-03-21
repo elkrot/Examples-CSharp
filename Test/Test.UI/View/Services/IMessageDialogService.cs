@@ -1,8 +1,10 @@
-﻿namespace Test.UI.View.Services
+﻿using System.Threading.Tasks;
+
+namespace Test.UI.View.Services
 {
     public interface IMessageDialogService
     {
-        MessageDialogResult ShowOKCancelDialog(string test, string title);
-        void ShowInfoDialog(string text);
+        Task<MessageDialogResult> ShowOKCancelDialogAsync(string text, string title);
+        Task ShowInfoDialogAsync(string text);
     }
 }

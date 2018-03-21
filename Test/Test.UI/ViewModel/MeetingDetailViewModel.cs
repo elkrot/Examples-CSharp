@@ -205,9 +205,9 @@ namespace Test.UI.ViewModel
             return meeting;
         }
 
-        protected override void OnDeleteExecute()
+        protected async override void OnDeleteExecute()
         {
-            var result = MessageDialogService.ShowOKCancelDialog($"{Meeting.Title}?", "");
+            var result = await MessageDialogService.ShowOKCancelDialogAsync($"{Meeting.Title}?", "");
             if (result == MessageDialogResult.OK)
             {
                 _meetingRepository.Remove(Meeting.Model);

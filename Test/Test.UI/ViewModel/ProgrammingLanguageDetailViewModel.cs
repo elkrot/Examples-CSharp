@@ -56,7 +56,7 @@ namespace Test.UI.ViewModel
                     SelectedProgrammingLanguage.Id);
 
             if (isReferenced) {
-                MessageDialogService.ShowInfoDialog("!!!");
+                await MessageDialogService.ShowInfoDialogAsync("!!!");
                 return;
             }
 
@@ -134,7 +134,7 @@ namespace Test.UI.ViewModel
                 {
                     ex = ex.InnerException;
                 }
-                MessageDialogService.ShowInfoDialog("Error" + ex.Message);
+                await MessageDialogService.ShowInfoDialogAsync("Error" + ex.Message);
 
                 await LoadAsync(Id);
             }
