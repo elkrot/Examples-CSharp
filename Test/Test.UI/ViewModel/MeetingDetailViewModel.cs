@@ -211,7 +211,7 @@ namespace Test.UI.ViewModel
             if (result == MessageDialogResult.OK)
             {
                 _meetingRepository.Remove(Meeting.Model);
-                _meetingRepository.SaveAsync();
+                await _meetingRepository.SaveAsync();
                 RaiseDetailDelitedEvent(Meeting.Id);
             }
         }
