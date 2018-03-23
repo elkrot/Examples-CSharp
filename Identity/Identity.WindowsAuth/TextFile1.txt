@@ -1,0 +1,6 @@
+﻿var sessionToken = new SessionSecurityToken(
+principal,TimeSpan.FromHours(8));
+
+FederationAuthentication
+.SessionAuthenticationModule
+.WriteSessionTokenCookie(sessionToken)
