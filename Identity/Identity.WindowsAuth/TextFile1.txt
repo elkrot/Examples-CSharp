@@ -4,3 +4,54 @@ principal,TimeSpan.FromHours(8));
 FederationAuthentication
 .SessionAuthenticationModule
 .WriteSessionTokenCookie(sessionToken)
+
+
+=============
+
+web.config
+...
+</appSettings>
+<system.identityModel configSource="identity.config"/>
+
+...
+
+identity.config
+
+<system.identityModel>
+<identityConfiguration>
+<claimsAuthenticationManager type="Security.ClaimsTransformer, Web"/>
+....
+
+
+2. identity.config
+<system.identityModel>
+<identityConfiguration>
+<audienceUris>
+<add value ="https://adfs/adfsapp/">
+
+<sertificateValidation certificateValidationMode="None"/>
+
+<issuerNameRegistry type = "System.IdentityModel.Tokens.ConfigurationBa..."
+<trustIssuers>
+<add thumbprint="8e c7 ....."/>
+.....
+
+
+identityServices.config
+
+<system.identityModel.services>
+<federationConfiguration>
+<wsFederation passiveRedirectEnabled="true"
+issuer ="https://adfs/ls"
+realm="https://adfs/adfsapp/"
+requireHttps="true"/>
+<cookieHandler requireSsl="true">
+...
+
+web.confog 
+<bindings>
+<ws2007FederationHttpBinding>
+<security mode ="TransportWithMessageCredential">
+<message establishSecurityContext="false"
+issuedKeyTypt ="BearerKey">
+<issuerMetadata address ="http://adfs/adfs/services/trust/mex"
