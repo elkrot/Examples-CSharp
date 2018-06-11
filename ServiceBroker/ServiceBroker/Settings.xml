@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <CommonObjects>
+    <SenderMessageType>//BothDB/2InstSample/RequestMessage</SenderMessageType>
+    <ReceiverMessageType>//BothDB/2InstSample/ReplyMessage</ReceiverMessageType>
+    <Contract>//BothDB/2InstSample/SimpleContract</Contract>
+    <SbLogin>SbLogin</SbLogin>
+    <StartDate>01/01/2018</StartDate>
+    <ExpiryDate>01/01/2019</ExpiryDate>
+  <CertificatePath>C:\Documents and Settings\Santhi\Desktop\Service Broker\Session\</CertificatePath>
+  </CommonObjects>
+
+  <Initiator ServerAddress="192.168.1.11" Port="1434">
+    <Database>InitiatorDb</Database>
+    <Queue>InitiatorQueue</Queue>
+    <Service>//AWDB/InternalAct/InitiatorService</Service>
+    <Endpoint Port="4022" Authentication="CERTIFICATE" Name="InstInitiatorEndpoint">
+      <masterkey>45Gme*3^fwu</masterkey>
+      <Certificate Subject="Initiator.Server.Local" >
+        EndPointInitiatorCertificate
+      </Certificate>
+    </Endpoint>
+  </Initiator>
+
+  <Target  ServerAddress="192.168.1.12" Port="1434">
+    <Database>TargetDb</Database>
+    <Queue>TargetQueue</Queue>
+    <Service>//AWDB/InternalAct/TargetService</Service>
+    <Endpoint Port="4022" Authentication="CERTIFICATE" Name="InstTargetEndpoint">
+      <masterkey>45Gme*3^fwu</masterkey>
+      <Certificate Subject="Target.Server.Local">
+        EndPointTargetCertificate
+      </Certificate>
+    </Endpoint>
+  </Target>
+</root>
