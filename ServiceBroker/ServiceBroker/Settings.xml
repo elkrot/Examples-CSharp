@@ -11,26 +11,35 @@
   </CommonObjects>
 
   <Initiator ServerAddress="192.168.1.11" Port="1434">
-    <Database>InitiatorDb</Database>
+    <Database Name="InitiatorDb">
+      <MasterKey>45Gme*3^fwu</MasterKey>
+      <User Name="InitiatorDatabaseUser">
+        <Certificate Subject="Initiator.Server.Local">InitiatorDatabaseUserCertificate</Certificate>
+      </User>
+    </Database>
     <Queue>InitiatorQueue</Queue>
     <Service>//AWDB/InternalAct/InitiatorService</Service>
-    <Endpoint Port="4022" Authentication="CERTIFICATE" Name="InstInitiatorEndpoint">
-      <masterkey>45Gme*3^fwu</masterkey>
-      <Certificate Subject="Initiator.Server.Local" >
-        EndPointInitiatorCertificate
-      </Certificate>
-    </Endpoint>
+    <EndPoint Port="4022" Authentication="CERTIFICATE" Name="InstInitiatorEndpoint">
+      <MasterKey>45Gme*3^fwu</MasterKey>
+      <Certificate Subject="Initiator.Server.Local" >EndPointInitiatorCertificate</Certificate>
+    </EndPoint>
+    <Route>InitiatorRoute</Route>
   </Initiator>
 
   <Target  ServerAddress="192.168.1.12" Port="1434">
-    <Database>TargetDb</Database>
+    <Database Name="TargetDb">
+      <MasterKey>45Gme*3^fwu</MasterKey>
+      <User Name="TargetDatabaseUser">
+        <Certificate Subject="Target.Server.Local">TargetDatabaseUserCertificate</Certificate>
+      </User>
+    </Database>
     <Queue>TargetQueue</Queue>
     <Service>//AWDB/InternalAct/TargetService</Service>
-    <Endpoint Port="4022" Authentication="CERTIFICATE" Name="InstTargetEndpoint">
-      <masterkey>45Gme*3^fwu</masterkey>
-      <Certificate Subject="Target.Server.Local">
-        EndPointTargetCertificate
-      </Certificate>
-    </Endpoint>
+    <EndPoint Port="4022" Authentication="CERTIFICATE" Name="InstTargetEndpoint">
+      <MasterKey>45Gme*3^fwu</MasterKey>
+      <Certificate Subject="Target.Server.Local">EndPointTargetCertificate</Certificate>
+    </EndPoint>
+    <Route>TargetRoute</Route>
   </Target>
+  
 </root>

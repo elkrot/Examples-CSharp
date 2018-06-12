@@ -83,6 +83,15 @@
     <Build Include="Target\CreateTargetObjects.sql">
       <DependentUpon>Target\CreateTargetObjects.tt</DependentUpon>
     </Build>
+    <Build Include="Initiator\CreateInitiatorObjects.sql">
+      <DependentUpon>Initiator\CreateInitiatorObjects.tt</DependentUpon>
+    </Build>
+    <Build Include="Initiator\InitiatorDialog.sql">
+      <DependentUpon>Initiator\InitiatorDialog.tt</DependentUpon>
+    </Build>
+    <Build Include="Target\TargetDialog.sql">
+      <DependentUpon>Target\TargetDialog.tt</DependentUpon>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <None Include="Init.tt">
@@ -104,5 +113,19 @@
     <None Include="Target\CreateTargetObjects.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
+    <None Include="Initiator\CreateInitiatorObjects.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Include="Target\TargetDialog.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Include="Initiator\InitiatorDialog.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Target\CreateTargetObjects.cs">
+      <DependentUpon>Target\CreateTargetObjects.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
