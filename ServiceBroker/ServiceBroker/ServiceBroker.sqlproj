@@ -71,11 +71,11 @@
     <Build Include="Common\CreateCommonObjects.sql">
       <DependentUpon>Common\CreateCommonObjects.tt</DependentUpon>
     </Build>
-    <Build Include="Initiator\DropInitiatorObjects.sql">
-      <DependentUpon>Initiator\DropInitiatorObjects.tt</DependentUpon>
-    </Build>
     <Build Include="Common\DropCommonObjects.sql">
       <DependentUpon>Common\DropCommonObjects.tt</DependentUpon>
+    </Build>
+    <Build Include="Initiator\DropInitiatorObjects.sql">
+      <DependentUpon>Initiator\DropInitiatorObjects.tt</DependentUpon>
     </Build>
     <Build Include="Target\DropTargetObjects.sql">
       <DependentUpon>Target\DropTargetObjects.tt</DependentUpon>
@@ -86,11 +86,11 @@
     <Build Include="Initiator\CreateInitiatorObjects.sql">
       <DependentUpon>Initiator\CreateInitiatorObjects.tt</DependentUpon>
     </Build>
-    <Build Include="Initiator\InitiatorDialog.sql">
-      <DependentUpon>Initiator\InitiatorDialog.tt</DependentUpon>
-    </Build>
     <Build Include="Target\TargetDialog.sql">
       <DependentUpon>Target\TargetDialog.tt</DependentUpon>
+    </Build>
+    <Build Include="Initiator\InitiatorDialog.sql">
+      <DependentUpon>Initiator\InitiatorDialog.tt</DependentUpon>
     </Build>
   </ItemGroup>
   <ItemGroup>

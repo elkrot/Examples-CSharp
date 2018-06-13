@@ -7,10 +7,10 @@
     <SbLogin>SbLogin</SbLogin>
     <StartDate>01/01/2018</StartDate>
     <ExpiryDate>01/01/2019</ExpiryDate>
-  <CertificatePath>C:\Documents and Settings\Santhi\Desktop\Service Broker\Session\</CertificatePath>
+  <CertificatePath>D:\storedcerts\$ampleSSBCerts\</CertificatePath>
   </CommonObjects>
 
-  <Initiator ServerAddress="192.168.1.11" Port="1434">
+  <Initiator ServerAddress="10.200.0.42" Port="4022">
     <Database Name="InitiatorDb">
       <MasterKey>45Gme*3^fwu</MasterKey>
       <User Name="InitiatorDatabaseUser">
@@ -18,7 +18,7 @@
       </User>
     </Database>
     <Queue>InitiatorQueue</Queue>
-    <Service>//AWDB/InternalAct/InitiatorService</Service>
+    <Service>//Initiator/InternalAct/InitiatorService</Service>
     <EndPoint Port="4022" Authentication="CERTIFICATE" Name="InstInitiatorEndpoint">
       <MasterKey>45Gme*3^fwu</MasterKey>
       <Certificate Subject="Initiator.Server.Local" >EndPointInitiatorCertificate</Certificate>
@@ -26,7 +26,7 @@
     <Route>InitiatorRoute</Route>
   </Initiator>
 
-  <Target  ServerAddress="192.168.1.12" Port="1434">
+  <Target  ServerAddress="10.200.0.41" Port="4022">
     <Database Name="TargetDb">
       <MasterKey>45Gme*3^fwu</MasterKey>
       <User Name="TargetDatabaseUser">
@@ -34,7 +34,7 @@
       </User>
     </Database>
     <Queue>TargetQueue</Queue>
-    <Service>//AWDB/InternalAct/TargetService</Service>
+    <Service>//Target/InternalAct/TargetService</Service>
     <EndPoint Port="4022" Authentication="CERTIFICATE" Name="InstTargetEndpoint">
       <MasterKey>45Gme*3^fwu</MasterKey>
       <Certificate Subject="Target.Server.Local">EndPointTargetCertificate</Certificate>
