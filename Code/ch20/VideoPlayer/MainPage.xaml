@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="VideoPlayer.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:local="clr-namespace:VideoPlayer"
+    Width="400" Height="300">
+    <Grid x:Name="LayoutRoot" Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <MediaElement Grid.Row="0"
+            x:Name="videoPlayer" 
+            Stretch="Fill"
+            DownloadProgressChanged="videoPlayer_DownloadProgressChanged"
+        >
+            <MediaElement.Projection>
+                <PlaneProjection RotationY="45" RotationX="-15"/>
+            </MediaElement.Projection>
+        </MediaElement>
+        <local:PlayDownloadProgressControl x:Name="progressBar" Height="4" Grid.Row="0" VerticalAlignment="Bottom"/>
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="URL:" Foreground="White" VerticalAlignment="Center"/>
+                <TextBox x:Name="textBoxURL" Text="http://mschnlnine.vo.llnwd.net/d1/ch9/8/7/1/6/6/4/MTSloobOnMac_2MB_ch9.wmv"
+                        VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="buttonPlay" Content="Play" Margin="4" Click="buttonPlay_Click" />
+                <Button x:Name="buttonStop" Content="Stop" Margin="4" Click="buttonStop_Click" />                
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

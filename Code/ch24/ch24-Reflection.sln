@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumerateAssemblyTypes", "EnumerateAssemblyTypes\EnumerateAssemblyTypes.csproj", "{B1D3EF00-2946-4C46-A3D1-E8B633F551C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicInstantiate", "DynamicInstantiate\DynamicInstantiate.csproj", "{DE55ECB4-5E54-4029-90CF-7A0B6226A85E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicInstantiateLib", "DynamicInstantiateLib\DynamicInstantiateLib.csproj", "{C33B4B17-2E6E-48D0-B0A0-2385D18D5ABB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PluginDemo", "PluginDemo", "{40926725-43B2-4001-8343-F98061594872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginDemo", "PluginDemo\PluginDemo.csproj", "{A834F769-36D3-4CE6-9DD3-BE0C29F6DE8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluifyPlugin", "BluifyPlugin\BluifyPlugin.csproj", "{5B1E8102-463B-418B-8C8A-2698834186A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginInterfaces", "PluginInterfaces\PluginInterfaces.csproj", "{6B52981A-ED90-4CBD-9306-1659EC50BB9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiscPlugins", "MiscPlugins\MiscPlugins.csproj", "{14903125-051A-4B47-A824-3CE69034FDF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttributeDemo", "AttributeDemo\AttributeDemo.csproj", "{092BE1AC-6A75-4ABA-A5D4-3F5165A98145}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1D3EF00-2946-4C46-A3D1-E8B633F551C6}.Debug|x86.ActiveCfg = Debug|x86
+		{B1D3EF00-2946-4C46-A3D1-E8B633F551C6}.Debug|x86.Build.0 = Debug|x86
+		{B1D3EF00-2946-4C46-A3D1-E8B633F551C6}.Release|x86.ActiveCfg = Release|x86
+		{B1D3EF00-2946-4C46-A3D1-E8B633F551C6}.Release|x86.Build.0 = Release|x86
+		{DE55ECB4-5E54-4029-90CF-7A0B6226A85E}.Debug|x86.ActiveCfg = Debug|x86
+		{DE55ECB4-5E54-4029-90CF-7A0B6226A85E}.Debug|x86.Build.0 = Debug|x86
+		{DE55ECB4-5E54-4029-90CF-7A0B6226A85E}.Release|x86.ActiveCfg = Release|x86
+		{DE55ECB4-5E54-4029-90CF-7A0B6226A85E}.Release|x86.Build.0 = Release|x86
+		{C33B4B17-2E6E-48D0-B0A0-2385D18D5ABB}.Debug|x86.ActiveCfg = Debug|x86
+		{C33B4B17-2E6E-48D0-B0A0-2385D18D5ABB}.Debug|x86.Build.0 = Debug|x86
+		{C33B4B17-2E6E-48D0-B0A0-2385D18D5ABB}.Release|x86.ActiveCfg = Release|x86
+		{C33B4B17-2E6E-48D0-B0A0-2385D18D5ABB}.Release|x86.Build.0 = Release|x86
+		{A834F769-36D3-4CE6-9DD3-BE0C29F6DE8A}.Debug|x86.ActiveCfg = Debug|x86
+		{A834F769-36D3-4CE6-9DD3-BE0C29F6DE8A}.Debug|x86.Build.0 = Debug|x86
+		{A834F769-36D3-4CE6-9DD3-BE0C29F6DE8A}.Release|x86.ActiveCfg = Release|x86
+		{A834F769-36D3-4CE6-9DD3-BE0C29F6DE8A}.Release|x86.Build.0 = Release|x86
+		{5B1E8102-463B-418B-8C8A-2698834186A6}.Debug|x86.ActiveCfg = Debug|x86
+		{5B1E8102-463B-418B-8C8A-2698834186A6}.Debug|x86.Build.0 = Debug|x86
+		{5B1E8102-463B-418B-8C8A-2698834186A6}.Release|x86.ActiveCfg = Release|x86
+		{5B1E8102-463B-418B-8C8A-2698834186A6}.Release|x86.Build.0 = Release|x86
+		{6B52981A-ED90-4CBD-9306-1659EC50BB9B}.Debug|x86.ActiveCfg = Debug|x86
+		{6B52981A-ED90-4CBD-9306-1659EC50BB9B}.Debug|x86.Build.0 = Debug|x86
+		{6B52981A-ED90-4CBD-9306-1659EC50BB9B}.Release|x86.ActiveCfg = Release|x86
+		{6B52981A-ED90-4CBD-9306-1659EC50BB9B}.Release|x86.Build.0 = Release|x86
+		{14903125-051A-4B47-A824-3CE69034FDF0}.Debug|x86.ActiveCfg = Debug|x86
+		{14903125-051A-4B47-A824-3CE69034FDF0}.Debug|x86.Build.0 = Debug|x86
+		{14903125-051A-4B47-A824-3CE69034FDF0}.Release|x86.ActiveCfg = Release|x86
+		{14903125-051A-4B47-A824-3CE69034FDF0}.Release|x86.Build.0 = Release|x86
+		{092BE1AC-6A75-4ABA-A5D4-3F5165A98145}.Debug|x86.ActiveCfg = Debug|x86
+		{092BE1AC-6A75-4ABA-A5D4-3F5165A98145}.Debug|x86.Build.0 = Debug|x86
+		{092BE1AC-6A75-4ABA-A5D4-3F5165A98145}.Release|x86.ActiveCfg = Release|x86
+		{092BE1AC-6A75-4ABA-A5D4-3F5165A98145}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A834F769-36D3-4CE6-9DD3-BE0C29F6DE8A} = {40926725-43B2-4001-8343-F98061594872}
+		{5B1E8102-463B-418B-8C8A-2698834186A6} = {40926725-43B2-4001-8343-F98061594872}
+		{6B52981A-ED90-4CBD-9306-1659EC50BB9B} = {40926725-43B2-4001-8343-F98061594872}
+		{14903125-051A-4B47-A824-3CE69034FDF0} = {40926725-43B2-4001-8343-F98061594872}
+	EndGlobalSection
+EndGlobal

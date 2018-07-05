@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TimeDisplayControl.ascx.cs" Inherits="WebPartsDemo.TimeDisplayControl" %>
+<asp:Label ID="TimeLabel" runat="server" Text="00:00:00"></asp:Label>

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 10
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassSample", "ClassSample\ClassSample.csproj", "{4D610BA5-4A2E-4378-9122-66DB32B11D13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodOverride", "MethodOverride\MethodOverride.csproj", "{582313F1-5839-4D2A-98B2-CBC3603EDB05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnonymousTypes", "AnonymousTypes\AnonymousTypes.csproj", "{D923F0A3-44A9-4A60-97ED-ABECE22369F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D610BA5-4A2E-4378-9122-66DB32B11D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D610BA5-4A2E-4378-9122-66DB32B11D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D610BA5-4A2E-4378-9122-66DB32B11D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D610BA5-4A2E-4378-9122-66DB32B11D13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{582313F1-5839-4D2A-98B2-CBC3603EDB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{582313F1-5839-4D2A-98B2-CBC3603EDB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{582313F1-5839-4D2A-98B2-CBC3603EDB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{582313F1-5839-4D2A-98B2-CBC3603EDB05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D923F0A3-44A9-4A60-97ED-ABECE22369F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D923F0A3-44A9-4A60-97ED-ABECE22369F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D923F0A3-44A9-4A60-97ED-ABECE22369F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D923F0A3-44A9-4A60-97ED-ABECE22369F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

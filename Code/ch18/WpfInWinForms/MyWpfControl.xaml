@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="WpfInWinForms.MyWpfControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="63" Width="277">
+    <Grid Height="63" Width="158">
+        <Button Name="MyButton" Height="61" VerticalAlignment="Top" Click="OnClick" HorizontalAlignment="Left" Width="155">
+            <StackPanel Orientation="Horizontal">
+                <Label>WPF Label:</Label>
+                <TextBox>WPF Textbox</TextBox>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

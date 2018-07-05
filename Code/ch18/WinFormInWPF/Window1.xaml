@@ -1,0 +1,13 @@
+﻿<Window x:Class="WinFormInWPF.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:winforms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+    Title="WinForm control in WPF" Height="300" Width="300">
+    <Grid>
+        <!-- Yes, you can declare WinForms UI in XAML! -->
+        <WindowsFormsHost Margin="12,41,66,12" Name="windowsFormsHost1">
+            <winforms:NumericUpDown x:Name="numberPicker"/>
+        </WindowsFormsHost>
+        <Button Height="23" HorizontalAlignment="Left" Margin="12,12,0,0" Name="button1" VerticalAlignment="Top" Width="75">WPF Button</Button>
+    </Grid>
+</Window>

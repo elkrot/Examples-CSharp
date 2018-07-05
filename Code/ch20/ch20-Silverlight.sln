@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoPlayer.Web", "VideoPlayer.Web\VideoPlayer.Web.csproj", "{E3EA53DA-861E-4F42-A351-BF97344A91EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoPlayer", "VideoPlayer\VideoPlayer.csproj", "{F4D64AEE-5948-469F-A1A5-E28AF73D0E45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SketchPad", "SketchPad\SketchPad.csproj", "{063150E3-870C-4D46-925B-5DEFF4909C30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SketchPad.Web", "SketchPad.Web\SketchPad.Web.csproj", "{448E8875-9D04-42FE-ADE6-FB5A9BF83B73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCam", "WebCam\WebCam.csproj", "{BEFA6BA2-ED56-4429-8452-ECD823E6847A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCam.Web", "WebCam.Web\WebCam.Web.csproj", "{FA009D6B-2970-491A-89B4-20A04F2BAC8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3EA53DA-861E-4F42-A351-BF97344A91EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3EA53DA-861E-4F42-A351-BF97344A91EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3EA53DA-861E-4F42-A351-BF97344A91EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3EA53DA-861E-4F42-A351-BF97344A91EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D64AEE-5948-469F-A1A5-E28AF73D0E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D64AEE-5948-469F-A1A5-E28AF73D0E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D64AEE-5948-469F-A1A5-E28AF73D0E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D64AEE-5948-469F-A1A5-E28AF73D0E45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{063150E3-870C-4D46-925B-5DEFF4909C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{063150E3-870C-4D46-925B-5DEFF4909C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{063150E3-870C-4D46-925B-5DEFF4909C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{063150E3-870C-4D46-925B-5DEFF4909C30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{448E8875-9D04-42FE-ADE6-FB5A9BF83B73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{448E8875-9D04-42FE-ADE6-FB5A9BF83B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{448E8875-9D04-42FE-ADE6-FB5A9BF83B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{448E8875-9D04-42FE-ADE6-FB5A9BF83B73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEFA6BA2-ED56-4429-8452-ECD823E6847A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEFA6BA2-ED56-4429-8452-ECD823E6847A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEFA6BA2-ED56-4429-8452-ECD823E6847A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEFA6BA2-ED56-4429-8452-ECD823E6847A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA009D6B-2970-491A-89B4-20A04F2BAC8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA009D6B-2970-491A-89B4-20A04F2BAC8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA009D6B-2970-491A-89B4-20A04F2BAC8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA009D6B-2970-491A-89B4-20A04F2BAC8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

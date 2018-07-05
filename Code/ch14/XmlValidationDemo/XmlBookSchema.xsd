@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Book" >
+    <xs:complexType >
+      <xs:sequence>
+        <xs:element name="Title" type="xs:string"/>
+        <xs:element name="Author" type="xs:string"/>
+      </xs:sequence>
+      <xs:attribute name="PublishYear" type="xs:gYear" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

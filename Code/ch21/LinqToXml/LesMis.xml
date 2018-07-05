@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Book>
+  <Title>Les Misérables</Title>
+  <Author>Victor Hugo</Author>
+  <Source Retrieved="2009-02-14T00:00:00">
+    <URL>http://www.gutenberg.org/files/135/135.txt</URL>
+  </Source>
+  <Chapters>
+    <Chapter>M. Myriel</Chapter>
+    <Chapter>M. Myriel becomes M. Welcome</Chapter>
+    <Chapter>A Hard Bishopric for a Good Bishop</Chapter>
+    <Chapter>Monseigneur Bienvenu made his Cassocks last too long</Chapter>
+    <Chapter>Who guarded his House for him</Chapter>
+    <Chapter>Cravatte</Chapter>
+    <Chapter>Philosophy after Drinking</Chapter>
+    <Chapter>The Brother as depicted by the Sister</Chapter>
+    <Chapter>The Bishop in the Presence of an Unknown Light</Chapter>
+    <Chapter>A Restriction</Chapter>
+    <Chapter>The Solitude of Monseigneur Welcome</Chapter>
+    <Chapter>What he believed</Chapter>
+    <Chapter>What he thought</Chapter>
+    <Chapter>...far too many more...</Chapter>
+  </Chapters>
+</Book>

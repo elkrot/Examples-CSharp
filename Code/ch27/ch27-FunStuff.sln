@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 10
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardShuffle", "CardShuffle\CardShuffle.csproj", "{1B7501CD-60C9-4929-92C5-7AA991059213}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifyIconDemo", "NotifyIconDemo\NotifyIconDemo.csproj", "{E939E620-98C4-4AE8-A4F1-BC4AAF4E24E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplashScreenWinForms", "SplashScreenWinForms\SplashScreenWinForms.csproj", "{E106BCD9-3C1E-40D4-B1C4-B311C775FEE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplashScreenWPF", "SplashScreenWPF\SplashScreenWPF.csproj", "{C95BB6D5-38A3-44C9-8A2D-D53386E2179F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransparentForm", "TransparentForm\TransparentForm.csproj", "{58EF12ED-160C-4CAF-9078-F5DFF51803D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransparentFormWPF", "TransparentFormWPF\TransparentFormWPF.csproj", "{D2A2EFD8-75C6-44D0-BB39-31E192E98686}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenSaverWPF", "ScreenSaverWPF\ScreenSaverWPF.csproj", "{BDE4D9E2-B598-4062-9409-D282D6931240}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B7501CD-60C9-4929-92C5-7AA991059213}.Debug|x86.ActiveCfg = Debug|x86
+		{1B7501CD-60C9-4929-92C5-7AA991059213}.Debug|x86.Build.0 = Debug|x86
+		{1B7501CD-60C9-4929-92C5-7AA991059213}.Release|x86.ActiveCfg = Release|x86
+		{1B7501CD-60C9-4929-92C5-7AA991059213}.Release|x86.Build.0 = Release|x86
+		{E939E620-98C4-4AE8-A4F1-BC4AAF4E24E2}.Debug|x86.ActiveCfg = Debug|x86
+		{E939E620-98C4-4AE8-A4F1-BC4AAF4E24E2}.Debug|x86.Build.0 = Debug|x86
+		{E939E620-98C4-4AE8-A4F1-BC4AAF4E24E2}.Release|x86.ActiveCfg = Release|x86
+		{E939E620-98C4-4AE8-A4F1-BC4AAF4E24E2}.Release|x86.Build.0 = Release|x86
+		{E106BCD9-3C1E-40D4-B1C4-B311C775FEE6}.Debug|x86.ActiveCfg = Debug|x86
+		{E106BCD9-3C1E-40D4-B1C4-B311C775FEE6}.Debug|x86.Build.0 = Debug|x86
+		{E106BCD9-3C1E-40D4-B1C4-B311C775FEE6}.Release|x86.ActiveCfg = Release|x86
+		{E106BCD9-3C1E-40D4-B1C4-B311C775FEE6}.Release|x86.Build.0 = Release|x86
+		{C95BB6D5-38A3-44C9-8A2D-D53386E2179F}.Debug|x86.ActiveCfg = Debug|x86
+		{C95BB6D5-38A3-44C9-8A2D-D53386E2179F}.Debug|x86.Build.0 = Debug|x86
+		{C95BB6D5-38A3-44C9-8A2D-D53386E2179F}.Release|x86.ActiveCfg = Release|x86
+		{C95BB6D5-38A3-44C9-8A2D-D53386E2179F}.Release|x86.Build.0 = Release|x86
+		{58EF12ED-160C-4CAF-9078-F5DFF51803D6}.Debug|x86.ActiveCfg = Debug|x86
+		{58EF12ED-160C-4CAF-9078-F5DFF51803D6}.Debug|x86.Build.0 = Debug|x86
+		{58EF12ED-160C-4CAF-9078-F5DFF51803D6}.Release|x86.ActiveCfg = Release|x86
+		{58EF12ED-160C-4CAF-9078-F5DFF51803D6}.Release|x86.Build.0 = Release|x86
+		{D2A2EFD8-75C6-44D0-BB39-31E192E98686}.Debug|x86.ActiveCfg = Debug|x86
+		{D2A2EFD8-75C6-44D0-BB39-31E192E98686}.Debug|x86.Build.0 = Debug|x86
+		{D2A2EFD8-75C6-44D0-BB39-31E192E98686}.Release|x86.ActiveCfg = Release|x86
+		{D2A2EFD8-75C6-44D0-BB39-31E192E98686}.Release|x86.Build.0 = Release|x86
+		{BDE4D9E2-B598-4062-9409-D282D6931240}.Debug|x86.ActiveCfg = Debug|x86
+		{BDE4D9E2-B598-4062-9409-D282D6931240}.Debug|x86.Build.0 = Debug|x86
+		{BDE4D9E2-B598-4062-9409-D282D6931240}.Release|x86.ActiveCfg = Release|x86
+		{BDE4D9E2-B598-4062-9409-D282D6931240}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

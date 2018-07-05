@@ -1,0 +1,8 @@
+﻿<Window x:Class="UnhandledExceptionWPF.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Unhandled Exception - WPF version" Height="300" Width="300">
+    <Grid>
+        <Button Margin="12,12,41,105" Name="button1" Click="button1_Click">Throw Exception</Button>
+    </Grid>
+</Window>

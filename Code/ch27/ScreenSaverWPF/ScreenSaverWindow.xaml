@@ -1,0 +1,11 @@
+﻿<Window x:Class="ScreenSaverWPF.ScreenSaverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="300" Width="300"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Black" >
+    <Canvas x:Name="canvas">
+        <Image x:Name="imageFloating" Width="100" Height="100" Stretch="Fill" />
+    </Canvas>
+</Window>

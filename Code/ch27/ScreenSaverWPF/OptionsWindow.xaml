@@ -1,0 +1,9 @@
+﻿<Window x:Class="ScreenSaverWPF.OptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Screen Saver Options" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <TextBlock>No options available!</TextBlock>
+        <Button Margin="203,234,0,0" IsDefault="True" IsCancel="True" Click="Button_Click">Cancel</Button>
+    </Grid>
+</Window>

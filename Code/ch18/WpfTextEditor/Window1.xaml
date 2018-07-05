@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfTextEditor.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="WPF Text Editor" Height="300" Width="300"
+    xmlns:local="clr-namespace:WpfTextEditor"
+        x:Name="MainWindow">
+    <DockPanel Name="dockPanel1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Menu DockPanel.Dock="Top" Height="Auto">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Command="local:WpfTextEditorCommands.ExitCommand"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Copy" Command="Copy"/>
+                <MenuItem Header="C_ut" Command="Cut"/>
+                <MenuItem Header="_Paste" Command="Paste"/>
+            </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem  Header="_Wordwrap" IsCheckable="True"  Name="menuItemWordWrap" Command="local:WpfTextEditorCommands.WordWrapCommand"/>
+            </MenuItem>
+        </Menu>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar >
+                <Button Command="ApplicationCommands.Copy">
+                        <Image Source="Resources\Copy.png" Opacity="1"></Image>
+                    </Button>
+                <CheckBox IsChecked="{Binding Mode=TwoWay, ElementName=menuItemWordWrap, Path=IsChecked}" Command="local:WpfTextEditorCommands.WordWrapCommand">
+                        <Image Source="Resources\WordWrap.png" OpacityMask="White"></Image>
+                </CheckBox>
+            </ToolBar>
+        </ToolBarTray>
+        <StatusBar DockPanel.Dock="Bottom">
+            <TextBlock><TextBlock Text="{Binding ElementName=textBox, Path=Text.Length, StringFormat=N0}"/> characters</TextBlock>
+        </StatusBar>
+        <TextBox AcceptsReturn="True" SpellCheck.IsEnabled="True" Name="textBox" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"></TextBox>
+    </DockPanel>
+</Window>

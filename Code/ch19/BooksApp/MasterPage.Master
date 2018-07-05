@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="BooksApp.MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    <title>Books App</title>
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div style="position:absolute;top:0px;width:800px;height:50px;">
+        <asp:ContentPlaceHolder ID="Header" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    <div style="position:absolute; top:100px; width:100px; background-color:#DCDCFF;">
+        <asp:Menu ID="MainMenu" runat="server" DataSourceID="SiteMapDataSource1">
+        </asp:Menu>
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" 
+            ShowStartingNode="False" />
+    </div>
+    <div style="position:absolute; top: 100px; left:110px; width:700px;">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
