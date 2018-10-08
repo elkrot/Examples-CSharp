@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://xxx.com" elementFormDefault="qualified" targetNamespace="http://xxx.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CarService" />
+  <xs:element name="CarInfoWrapper">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Capacity" type="xs:double" />
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+        <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Passengers" type="xs:int" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/CarService" minOccurs="0" name="Type" type="q1:CarType" />
+        <xs:element minOccurs="0" name="Vendor" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Year" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CarRequestWrapper">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LicenseKey" nillable="true" type="xs:string" />
+</xs:schema>
