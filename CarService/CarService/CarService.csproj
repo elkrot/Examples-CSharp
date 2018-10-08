@@ -49,6 +49,7 @@
     <Compile Include="CarRequest.cs" />
     <Compile Include="CarService.cs" />
     <Compile Include="CarType.cs" />
+    <Compile Include="ErrorHandlerConfigElement.cs" />
     <Compile Include="ICarService.cs" />
     <Compile Include="MainErrorHandler.cs" />
     <Compile Include="MainErrorHandlerBehavior.cs" />

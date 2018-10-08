@@ -13,6 +13,11 @@ namespace CarService
 {
     public class MainErrorHandlerBehavior : IServiceBehavior
     {
+        private Type _handlerType;
+        public MainErrorHandlerBehavior(Type handlerType)
+        {
+            _handlerType = handlerType;
+        }
         public void AddBindingParameters(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase, Collection<ServiceEndpoint> endpoints, BindingParameterCollection bindingParameters)
         {
            
@@ -20,7 +25,7 @@ namespace CarService
 
         public void ApplyDispatchBehavior(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase)
         {
-            var handler = new MainErrorHandler();
+            var handler = (IErrorHandler)Activator.CreateInstance(_handlerType);
             foreach (var item in serviceHostBase.ChannelDispatchers)
             {
                 var ichDisp = item as ChannelDispatcher;
