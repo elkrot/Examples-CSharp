@@ -9,3 +9,14 @@ D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Fakes\bin\
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Fakes\obj\x86\Debug\Fakes.csprojResolveAssemblyReference.cache
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Fakes\obj\x86\Debug\EmployeeTracker.Fakes.dll
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Fakes\obj\x86\Debug\EmployeeTracker.Fakes.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\bin\Debug\EmployeeTracker.Fakes.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\bin\Debug\EmployeeTracker.Fakes.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\bin\Debug\EmployeeTracker.Fakes.dll.CodeAnalysisLog.xml
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\bin\Debug\EmployeeTracker.Fakes.dll.lastcodeanalysissucceeded
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\bin\Debug\EmployeeTracker.Common.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\bin\Debug\EmployeeTracker.Model.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\bin\Debug\EmployeeTracker.Common.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\bin\Debug\EmployeeTracker.Model.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\obj\x86\Debug\Fakes.csprojResolveAssemblyReference.cache
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\obj\x86\Debug\EmployeeTracker.Fakes.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Fakes\obj\x86\Debug\EmployeeTracker.Fakes.pdb

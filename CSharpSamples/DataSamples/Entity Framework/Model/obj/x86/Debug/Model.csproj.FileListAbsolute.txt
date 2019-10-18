@@ -4,3 +4,10 @@ D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Model\bin\
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Model\bin\Debug\EmployeeTracker.Model.dll.lastcodeanalysissucceeded
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Model\obj\x86\Debug\EmployeeTracker.Model.dll
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Model\obj\x86\Debug\EmployeeTracker.Model.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Model\bin\Debug\EmployeeTracker.Model.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Model\bin\Debug\EmployeeTracker.Model.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Model\bin\Debug\EmployeeTracker.Model.dll.CodeAnalysisLog.xml
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Model\bin\Debug\EmployeeTracker.Model.dll.lastcodeanalysissucceeded
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Model\obj\x86\Debug\Model.csprojResolveAssemblyReference.cache
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Model\obj\x86\Debug\EmployeeTracker.Model.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Model\obj\x86\Debug\EmployeeTracker.Model.pdb

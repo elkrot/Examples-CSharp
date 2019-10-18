@@ -46,6 +46,7 @@ public class FileByteArray
             byte[] buffer = new byte[1] {value};
             stream.Seek(index, SeekOrigin.Begin);
             stream.Write(buffer, 0, 1);
+            
         }
     }
 
@@ -72,8 +73,8 @@ public class Reverse
 			return;
 		}
 
-		// Проверка существования файла
-		if (!System.IO.File.Exists(args[0]))
+        // Проверка существования файла
+        if (!System.IO.File.Exists(args[0]))
 		{
 			Console.WriteLine("File " + args[0] + " not found.");
 			return;
@@ -81,9 +82,9 @@ public class Reverse
 
 		FileByteArray file = new FileByteArray(args[0]);
 		long len = file.Length;
-
-		// Байты файла меняются местами, чтобы порядок их следования стал обратным.
-		for (long i = 0; i < len / 2; ++i) 
+        Console.WriteLine("start.");
+        // Байты файла меняются местами, чтобы порядок их следования стал обратным.
+        for (long i = 0; i < len / 2; ++i) 
 		{
 			byte t;
 
@@ -93,9 +94,12 @@ public class Reverse
 			t = file[i];
 			file[i] = file[len - i - 1];
 			file[len - i - 1] = t;
+            Console.WriteLine(Convert.ToString(i,8));
 		}
 
 		file.Close();
+
+        Console.ReadKey();
     } 
 }
 

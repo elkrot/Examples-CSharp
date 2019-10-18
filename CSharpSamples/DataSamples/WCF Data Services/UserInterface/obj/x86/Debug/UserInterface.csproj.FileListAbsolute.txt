@@ -1,1 +1,16 @@
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\WCF Data Services\UserInterface\bin\Debug\UserInterface.exe.config
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\bin\Debug\UserInterface.exe.config
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\bin\Debug\UserInterface.exe
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\bin\Debug\UserInterface.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\UserInterface.csprojResolveAssemblyReference.cache
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\ProductList.baml
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\ProductView.baml
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\ProductList.g.cs
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\ProductView.g.cs
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\App.g.cs
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\UserInterface_MarkupCompile.cache
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\UserInterface.g.resources
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\UserInterface.Properties.Resources.resources
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\UserInterface.csproj.GenerateResource.Cache
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\UserInterface.exe
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\WCF Data Services\UserInterface\obj\x86\Debug\UserInterface.pdb

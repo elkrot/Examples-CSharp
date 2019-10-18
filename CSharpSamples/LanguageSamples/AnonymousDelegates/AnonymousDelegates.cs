@@ -42,7 +42,7 @@ namespace AnonymousDelegate_Sample
 
             // Значение, используемое при расчете бонуса.
             // Примечание. Эта локальная переменная станет "зафиксированной внешней переменной".
-            decimal multiplier = 2;
+            decimal multiplier =2;
 
             // Этот делегат определяется как именованный метод.
             CalculateBonus standard_bonus = new CalculateBonus(CalculateStandardBonus);
@@ -87,7 +87,7 @@ namespace AnonymousDelegate_Sample
             foreach (Employee person in staff)
                 DisplayPersonDetails(person);
 
-
+            Console.ReadKey();
         }
 
         public static void PerformBonusCalculation(Employee person)

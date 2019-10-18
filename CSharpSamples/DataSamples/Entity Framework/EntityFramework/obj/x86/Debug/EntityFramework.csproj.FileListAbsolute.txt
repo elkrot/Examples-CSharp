@@ -11,3 +11,17 @@ D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFram
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.Model.pdb
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\obj\x86\Debug\EmployeeTracker.EntityFramework.dll
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\EntityFramework\obj\x86\Debug\EmployeeTracker.EntityFramework.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\Employee.mdf
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\Employee_log.LDF
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.EntityFramework.dll.config
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.EntityFramework.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.EntityFramework.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.EntityFramework.dll.CodeAnalysisLog.xml
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.EntityFramework.dll.lastcodeanalysissucceeded
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.Common.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.Model.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.Common.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\bin\Debug\EmployeeTracker.Model.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\obj\x86\Debug\EntityFramework.csprojResolveAssemblyReference.cache
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\obj\x86\Debug\EmployeeTracker.EntityFramework.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\EntityFramework\obj\x86\Debug\EmployeeTracker.EntityFramework.pdb

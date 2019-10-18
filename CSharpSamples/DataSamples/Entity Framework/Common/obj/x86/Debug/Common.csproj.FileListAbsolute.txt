@@ -5,3 +5,10 @@ D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Common\bin
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Common\obj\x86\Debug\EmployeeTracker.Common.dll
 D:\temp\_projects\_sharp\__CSharpSamples\DataSamples\Entity Framework\Common\obj\x86\Debug\EmployeeTracker.Common.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Common\bin\Debug\EmployeeTracker.Common.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Common\bin\Debug\EmployeeTracker.Common.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Common\bin\Debug\EmployeeTracker.Model.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Common\bin\Debug\EmployeeTracker.Model.pdb
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Common\obj\x86\Debug\EmployeeTracker.Common.dll
+D:\GitRepositories\Examples-CSharp\CSharpSamples\DataSamples\Entity Framework\Common\obj\x86\Debug\EmployeeTracker.Common.pdb

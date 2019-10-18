@@ -14,7 +14,7 @@ namespace CarHost
         {
             using (var host=new ServiceHost(typeof(CarService.CarService)))
             {
-                host.Description.Behaviors.Add(new MainErrorHandlerBehavior());
+               // host.Description.Behaviors.Add(new MainErrorHandlerBehavior());
                 host.Open();
 
                 Console.WriteLine("Host started...");

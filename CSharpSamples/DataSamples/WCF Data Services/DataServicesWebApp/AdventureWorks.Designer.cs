@@ -8,16 +8,17 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-
 #region Метаданные связи EDM
+
 [assembly: EdmRelationshipAttribute("AdventureWorksLTModel", "FK_CustomerAddress_Address_AddressID", "Address", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataServicesWebApp.Address), "CustomerAddress", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataServicesWebApp.CustomerAddress), true)]
 [assembly: EdmRelationshipAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Address_BillTo_AddressID", "Address", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataServicesWebApp.Address), "SalesOrderHeader", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataServicesWebApp.SalesOrderHeader))]
 [assembly: EdmRelationshipAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Address_ShipTo_AddressID", "Address", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataServicesWebApp.Address), "SalesOrderHeader", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataServicesWebApp.SalesOrderHeader))]
@@ -30,19 +31,22 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("AdventureWorksLTModel", "FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID", "ProductDescription", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataServicesWebApp.ProductDescription), "ProductModelProductDescription", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataServicesWebApp.ProductModelProductDescription), true)]
 [assembly: EdmRelationshipAttribute("AdventureWorksLTModel", "FK_ProductModelProductDescription_ProductModel_ProductModelID", "ProductModel", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataServicesWebApp.ProductModel), "ProductModelProductDescription", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataServicesWebApp.ProductModelProductDescription), true)]
 [assembly: EdmRelationshipAttribute("AdventureWorksLTModel", "FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID", "SalesOrderHeader", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataServicesWebApp.SalesOrderHeader), "SalesOrderDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataServicesWebApp.SalesOrderDetail), true)]
+
 #endregion
 
 namespace DataServicesWebApp
 {
     #region Контексты
+    
     /// <summary>
     /// Нет доступной документации по метаданным.
     /// </summary>
     public partial class AdventureWorksLTEntities : ObjectContext
     {
         #region Конструкторы
+    
         /// <summary>
-        /// Инициализирует новый объект AdventureWorksLTENtities, используя строку подключения, которая находится в секции "AdventureWorksLTEntities" файла конфигурации приложения.
+        /// Инициализирует новый объект AdventureWorksLTEntities, используя строку соединения из раздела "AdventureWorksLTEntities" файла конфигурации приложения.
         /// </summary>
         public AdventureWorksLTEntities() : base("name=AdventureWorksLTEntities", "AdventureWorksLTEntities")
         {
@@ -50,7 +54,7 @@ namespace DataServicesWebApp
         }
     
         /// <summary>
-        /// Инициализировать новый объект AdventureWorksLTEntities.
+        /// Инициализация нового объекта AdventureWorksLTEntities.
         /// </summary>
         public AdventureWorksLTEntities(string connectionString) : base(connectionString, "AdventureWorksLTEntities")
         {
@@ -58,19 +62,23 @@ namespace DataServicesWebApp
         }
     
         /// <summary>
-        /// Инициализировать новый объект AdventureWorksLTEntities.
+        /// Инициализация нового объекта AdventureWorksLTEntities.
         /// </summary>
         public AdventureWorksLTEntities(EntityConnection connection) : base(connection, "AdventureWorksLTEntities")
         {
             OnContextCreated();
         }
+    
         #endregion
-        
+    
         #region Разделяемые методы
+    
         partial void OnContextCreated();
+    
         #endregion
-        
+    
         #region Свойства ObjectSet
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -230,96 +238,99 @@ namespace DataServicesWebApp
             }
         }
         private ObjectSet<SalesOrderHeader> _SalesOrderHeaders;
-    
+
         #endregion
+
         #region Методы AddTo
-            
+    
         /// <summary>
-        /// Нерекомендуемый метод для добавления нового объекта к набору сущностей Addresses. Вместо него рекомендуется использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet Addresses. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToAddresses(Address address)
         {
             base.AddObject("Addresses", address);
         }
-            
+    
         /// <summary>
-        /// Нерекомендуемый метод для добавления нового объекта к набору сущностей Customers. Вместо него рекомендуется использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet Customers. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToCustomers(Customer customer)
         {
             base.AddObject("Customers", customer);
         }
-            
+    
         /// <summary>
-        /// Нерекомендуемый метод для добавления нового объекта к набору сущностей CustomerAddresses. Вместо него рекомендуется использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet CustomerAddresses. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToCustomerAddresses(CustomerAddress customerAddress)
         {
             base.AddObject("CustomerAddresses", customerAddress);
         }
-            
+    
         /// <summary>
-        /// Нерекомендуемый метод для добавления нового объекта к набору сущностей Products. Вместо него рекомендуется использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet Products. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToProducts(Product product)
         {
             base.AddObject("Products", product);
         }
-            
+    
         /// <summary>
-        /// Нерекомендуемый метод для добавления нового объекта к набору сущностей ProductCategories. Вместо него рекомендуется использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet ProductCategories. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToProductCategories(ProductCategory productCategory)
         {
             base.AddObject("ProductCategories", productCategory);
         }
-            
+    
         /// <summary>
-        /// Нерекомендуемый метод для добавления нового объекта к набору сущностей ProductDescriptions. Вместо него рекомендуется использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet ProductDescriptions. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToProductDescriptions(ProductDescription productDescription)
         {
             base.AddObject("ProductDescriptions", productDescription);
         }
-            
+    
         /// <summary>
-        /// Нерекомендуемый метод для добавления нового объекта к набору сущностей ProductModels. Вместо него рекомендуется использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet ProductModels. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToProductModels(ProductModel productModel)
         {
             base.AddObject("ProductModels", productModel);
         }
-            
+    
         /// <summary>
-        /// Нерекомендуемый метод для добавления нового объекта к набору сущностей ProductModelProductDescriptions. Вместо него рекомендуется использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet ProductModelProductDescriptions. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToProductModelProductDescriptions(ProductModelProductDescription productModelProductDescription)
         {
             base.AddObject("ProductModelProductDescriptions", productModelProductDescription);
         }
-            
+    
         /// <summary>
-        /// Нерекомендуемый метод для добавления нового объекта к набору сущностей SalesOrderDetails. Вместо него рекомендуется использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet SalesOrderDetails. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToSalesOrderDetails(SalesOrderDetail salesOrderDetail)
         {
             base.AddObject("SalesOrderDetails", salesOrderDetail);
         }
-            
+    
         /// <summary>
-        /// Нерекомендуемый метод для добавления нового объекта к набору сущностей SalesOrderHeaders. Вместо него рекомендуется использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet SalesOrderHeaders. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToSalesOrderHeaders(SalesOrderHeader salesOrderHeader)
         {
             base.AddObject("SalesOrderHeaders", salesOrderHeader);
         }
+
         #endregion
+
     }
-    
+
     #endregion
-    
-    
+
     #region Сущности
+    
     /// <summary>
     /// Нет доступной документации по метаданным.
     /// </summary>
@@ -328,42 +339,37 @@ namespace DataServicesWebApp
     [DataContractAttribute(IsReference=true)]
     public partial class Address : EntityObject
     {
-        #region Метод фабрики
+        #region Фабричный метод
+    
         /// <summary>
-        /// Создать новый объект Address.
+        /// Создание нового объекта Address.
         /// </summary>
-        /// <param name="addressID">Начальное значение свойства AddressID.</param>
-        /// <param name="addressLine1">Начальное значение свойства AddressLine1.</param>
-        /// <param name="city">Начальное значение свойства City.</param>
-        /// <param name="stateProvince">Начальное значение свойства StateProvince.</param>
-        /// <param name="countryRegion">Начальное значение свойства CountryRegion.</param>
-        /// <param name="postalCode">Начальное значение свойства PostalCode.</param>
-        /// <param name="rowguid">Начальное значение свойства rowguid.</param>
-        /// <param name="modifiedDate">Начальное значение свойства ModifiedDate.</param>
+        /// <param name="addressID">Исходное значение свойства AddressID.</param>
+        /// <param name="addressLine1">Исходное значение свойства AddressLine1.</param>
+        /// <param name="city">Исходное значение свойства City.</param>
+        /// <param name="stateProvince">Исходное значение свойства StateProvince.</param>
+        /// <param name="countryRegion">Исходное значение свойства CountryRegion.</param>
+        /// <param name="postalCode">Исходное значение свойства PostalCode.</param>
+        /// <param name="rowguid">Исходное значение свойства rowguid.</param>
+        /// <param name="modifiedDate">Исходное значение свойства ModifiedDate.</param>
         public static Address CreateAddress(global::System.Int32 addressID, global::System.String addressLine1, global::System.String city, global::System.String stateProvince, global::System.String countryRegion, global::System.String postalCode, global::System.Guid rowguid, global::System.DateTime modifiedDate)
         {
             Address address = new Address();
             address.AddressID = addressID;
-            
             address.AddressLine1 = addressLine1;
-            
             address.City = city;
-            
             address.StateProvince = stateProvince;
-            
             address.CountryRegion = countryRegion;
-            
             address.PostalCode = postalCode;
-            
             address.rowguid = rowguid;
-            
             address.ModifiedDate = modifiedDate;
-            
             return address;
         }
+
         #endregion
 
         #region Свойства-примитивы
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -386,12 +392,11 @@ namespace DataServicesWebApp
                     OnAddressIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _AddressID;
         partial void OnAddressIDChanging(global::System.Int32 value);
         partial void OnAddressIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -411,12 +416,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("AddressLine1");
                 OnAddressLine1Changed();
             }
-                
         }
         private global::System.String _AddressLine1;
         partial void OnAddressLine1Changing(global::System.String value);
         partial void OnAddressLine1Changed();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -436,12 +440,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("AddressLine2");
                 OnAddressLine2Changed();
             }
-                
         }
         private global::System.String _AddressLine2;
         partial void OnAddressLine2Changing(global::System.String value);
         partial void OnAddressLine2Changed();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -461,12 +464,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("City");
                 OnCityChanged();
             }
-                
         }
         private global::System.String _City;
         partial void OnCityChanging(global::System.String value);
         partial void OnCityChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -486,12 +488,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("StateProvince");
                 OnStateProvinceChanged();
             }
-                
         }
         private global::System.String _StateProvince;
         partial void OnStateProvinceChanging(global::System.String value);
         partial void OnStateProvinceChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -511,12 +512,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("CountryRegion");
                 OnCountryRegionChanged();
             }
-                
         }
         private global::System.String _CountryRegion;
         partial void OnCountryRegionChanging(global::System.String value);
         partial void OnCountryRegionChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -536,12 +536,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("PostalCode");
                 OnPostalCodeChanged();
             }
-                
         }
         private global::System.String _PostalCode;
         partial void OnPostalCodeChanging(global::System.String value);
         partial void OnPostalCodeChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -561,12 +560,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("rowguid");
                 OnrowguidChanged();
             }
-                
         }
         private global::System.Guid _rowguid;
         partial void OnrowguidChanging(global::System.Guid value);
         partial void OnrowguidChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -586,22 +584,23 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ModifiedDate");
                 OnModifiedDateChanged();
             }
-                
         }
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-        
+
         #endregion
+
     
         #region Свойства навигации
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_CustomerAddress_Address_AddressID", "CustomerAddress")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_CustomerAddress_Address_AddressID", "CustomerAddress")]
         public EntityCollection<CustomerAddress> CustomerAddresses
         {
             get
@@ -616,13 +615,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Address_BillTo_AddressID", "SalesOrderHeader")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Address_BillTo_AddressID", "SalesOrderHeader")]
         public EntityCollection<SalesOrderHeader> SalesOrderHeaders
         {
             get
@@ -637,13 +637,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Address_ShipTo_AddressID", "SalesOrderHeader")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Address_ShipTo_AddressID", "SalesOrderHeader")]
         public EntityCollection<SalesOrderHeader> SalesOrderHeaders1
         {
             get
@@ -658,7 +659,9 @@ namespace DataServicesWebApp
                 }
             }
         }
+
         #endregion
+
     }
     
     /// <summary>
@@ -669,42 +672,37 @@ namespace DataServicesWebApp
     [DataContractAttribute(IsReference=true)]
     public partial class Customer : EntityObject
     {
-        #region Метод фабрики
+        #region Фабричный метод
+    
         /// <summary>
-        /// Создать новый объект Customer.
+        /// Создание нового объекта Customer.
         /// </summary>
-        /// <param name="customerID">Начальное значение свойства CustomerID.</param>
-        /// <param name="nameStyle">Начальное значение свойства NameStyle.</param>
-        /// <param name="firstName">Начальное значение свойства FirstName.</param>
-        /// <param name="lastName">Начальное значение свойства LastName.</param>
-        /// <param name="passwordHash">Начальное значение свойства PasswordHash.</param>
-        /// <param name="passwordSalt">Начальное значение свойства PasswordSalt.</param>
-        /// <param name="rowguid">Начальное значение свойства rowguid.</param>
-        /// <param name="modifiedDate">Начальное значение свойства ModifiedDate.</param>
+        /// <param name="customerID">Исходное значение свойства CustomerID.</param>
+        /// <param name="nameStyle">Исходное значение свойства NameStyle.</param>
+        /// <param name="firstName">Исходное значение свойства FirstName.</param>
+        /// <param name="lastName">Исходное значение свойства LastName.</param>
+        /// <param name="passwordHash">Исходное значение свойства PasswordHash.</param>
+        /// <param name="passwordSalt">Исходное значение свойства PasswordSalt.</param>
+        /// <param name="rowguid">Исходное значение свойства rowguid.</param>
+        /// <param name="modifiedDate">Исходное значение свойства ModifiedDate.</param>
         public static Customer CreateCustomer(global::System.Int32 customerID, global::System.Boolean nameStyle, global::System.String firstName, global::System.String lastName, global::System.String passwordHash, global::System.String passwordSalt, global::System.Guid rowguid, global::System.DateTime modifiedDate)
         {
             Customer customer = new Customer();
             customer.CustomerID = customerID;
-            
             customer.NameStyle = nameStyle;
-            
             customer.FirstName = firstName;
-            
             customer.LastName = lastName;
-            
             customer.PasswordHash = passwordHash;
-            
             customer.PasswordSalt = passwordSalt;
-            
             customer.rowguid = rowguid;
-            
             customer.ModifiedDate = modifiedDate;
-            
             return customer;
         }
+
         #endregion
 
         #region Свойства-примитивы
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -727,12 +725,11 @@ namespace DataServicesWebApp
                     OnCustomerIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _CustomerID;
         partial void OnCustomerIDChanging(global::System.Int32 value);
         partial void OnCustomerIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -752,12 +749,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("NameStyle");
                 OnNameStyleChanged();
             }
-                
         }
         private global::System.Boolean _NameStyle;
         partial void OnNameStyleChanging(global::System.Boolean value);
         partial void OnNameStyleChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -777,12 +773,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Title");
                 OnTitleChanged();
             }
-                
         }
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -802,12 +797,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
-                
         }
         private global::System.String _FirstName;
         partial void OnFirstNameChanging(global::System.String value);
         partial void OnFirstNameChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -827,12 +821,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("MiddleName");
                 OnMiddleNameChanged();
             }
-                
         }
         private global::System.String _MiddleName;
         partial void OnMiddleNameChanging(global::System.String value);
         partial void OnMiddleNameChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -852,12 +845,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
-                
         }
         private global::System.String _LastName;
         partial void OnLastNameChanging(global::System.String value);
         partial void OnLastNameChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -877,12 +869,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Suffix");
                 OnSuffixChanged();
             }
-                
         }
         private global::System.String _Suffix;
         partial void OnSuffixChanging(global::System.String value);
         partial void OnSuffixChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -902,12 +893,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("CompanyName");
                 OnCompanyNameChanged();
             }
-                
         }
         private global::System.String _CompanyName;
         partial void OnCompanyNameChanging(global::System.String value);
         partial void OnCompanyNameChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -927,12 +917,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("SalesPerson");
                 OnSalesPersonChanged();
             }
-                
         }
         private global::System.String _SalesPerson;
         partial void OnSalesPersonChanging(global::System.String value);
         partial void OnSalesPersonChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -952,12 +941,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("EmailAddress");
                 OnEmailAddressChanged();
             }
-                
         }
         private global::System.String _EmailAddress;
         partial void OnEmailAddressChanging(global::System.String value);
         partial void OnEmailAddressChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -977,12 +965,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
-                
         }
         private global::System.String _Phone;
         partial void OnPhoneChanging(global::System.String value);
         partial void OnPhoneChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1002,12 +989,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("PasswordHash");
                 OnPasswordHashChanged();
             }
-                
         }
         private global::System.String _PasswordHash;
         partial void OnPasswordHashChanging(global::System.String value);
         partial void OnPasswordHashChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1027,12 +1013,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("PasswordSalt");
                 OnPasswordSaltChanged();
             }
-                
         }
         private global::System.String _PasswordSalt;
         partial void OnPasswordSaltChanging(global::System.String value);
         partial void OnPasswordSaltChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1052,12 +1037,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("rowguid");
                 OnrowguidChanged();
             }
-                
         }
         private global::System.Guid _rowguid;
         partial void OnrowguidChanging(global::System.Guid value);
         partial void OnrowguidChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1077,22 +1061,23 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ModifiedDate");
                 OnModifiedDateChanged();
             }
-                
         }
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-        
+
         #endregion
+
     
         #region Свойства навигации
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_CustomerAddress_Customer_CustomerID", "CustomerAddress")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_CustomerAddress_Customer_CustomerID", "CustomerAddress")]
         public EntityCollection<CustomerAddress> CustomerAddresses
         {
             get
@@ -1107,13 +1092,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Customer_CustomerID", "SalesOrderHeader")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Customer_CustomerID", "SalesOrderHeader")]
         public EntityCollection<SalesOrderHeader> SalesOrderHeaders
         {
             get
@@ -1128,7 +1114,9 @@ namespace DataServicesWebApp
                 }
             }
         }
+
         #endregion
+
     }
     
     /// <summary>
@@ -1139,33 +1127,31 @@ namespace DataServicesWebApp
     [DataContractAttribute(IsReference=true)]
     public partial class CustomerAddress : EntityObject
     {
-        #region Метод фабрики
+        #region Фабричный метод
+    
         /// <summary>
-        /// Создать новый объект CustomerAddress.
+        /// Создание нового объекта CustomerAddress.
         /// </summary>
-        /// <param name="customerID">Начальное значение свойства CustomerID.</param>
-        /// <param name="addressID">Начальное значение свойства AddressID.</param>
-        /// <param name="addressType">Начальное значение свойства AddressType.</param>
-        /// <param name="rowguid">Начальное значение свойства rowguid.</param>
-        /// <param name="modifiedDate">Начальное значение свойства ModifiedDate.</param>
+        /// <param name="customerID">Исходное значение свойства CustomerID.</param>
+        /// <param name="addressID">Исходное значение свойства AddressID.</param>
+        /// <param name="addressType">Исходное значение свойства AddressType.</param>
+        /// <param name="rowguid">Исходное значение свойства rowguid.</param>
+        /// <param name="modifiedDate">Исходное значение свойства ModifiedDate.</param>
         public static CustomerAddress CreateCustomerAddress(global::System.Int32 customerID, global::System.Int32 addressID, global::System.String addressType, global::System.Guid rowguid, global::System.DateTime modifiedDate)
         {
             CustomerAddress customerAddress = new CustomerAddress();
             customerAddress.CustomerID = customerID;
-            
             customerAddress.AddressID = addressID;
-            
             customerAddress.AddressType = addressType;
-            
             customerAddress.rowguid = rowguid;
-            
             customerAddress.ModifiedDate = modifiedDate;
-            
             return customerAddress;
         }
+
         #endregion
 
         #region Свойства-примитивы
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1188,12 +1174,11 @@ namespace DataServicesWebApp
                     OnCustomerIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _CustomerID;
         partial void OnCustomerIDChanging(global::System.Int32 value);
         partial void OnCustomerIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1216,12 +1201,11 @@ namespace DataServicesWebApp
                     OnAddressIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _AddressID;
         partial void OnAddressIDChanging(global::System.Int32 value);
         partial void OnAddressIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1241,12 +1225,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("AddressType");
                 OnAddressTypeChanged();
             }
-                
         }
         private global::System.String _AddressType;
         partial void OnAddressTypeChanging(global::System.String value);
         partial void OnAddressTypeChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1266,12 +1249,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("rowguid");
                 OnrowguidChanged();
             }
-                
         }
         private global::System.Guid _rowguid;
         partial void OnrowguidChanging(global::System.Guid value);
         partial void OnrowguidChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1291,22 +1273,23 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ModifiedDate");
                 OnModifiedDateChanged();
             }
-                
         }
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-        
+
         #endregion
+
     
         #region Свойства навигации
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_CustomerAddress_Address_AddressID", "Address")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_CustomerAddress_Address_AddressID", "Address")]
         public Address Address
         {
             get
@@ -1337,13 +1320,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_CustomerAddress_Customer_CustomerID", "Customer")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_CustomerAddress_Customer_CustomerID", "Customer")]
         public Customer Customer
         {
             get
@@ -1374,7 +1358,9 @@ namespace DataServicesWebApp
                 }
             }
         }
+
         #endregion
+
     }
     
     /// <summary>
@@ -1385,42 +1371,37 @@ namespace DataServicesWebApp
     [DataContractAttribute(IsReference=true)]
     public partial class Product : EntityObject
     {
-        #region Метод фабрики
+        #region Фабричный метод
+    
         /// <summary>
-        /// Создать новый объект Product.
+        /// Создание нового объекта Product.
         /// </summary>
-        /// <param name="productID">Начальное значение свойства ProductID.</param>
-        /// <param name="name">Начальное значение свойства Name.</param>
-        /// <param name="productNumber">Начальное значение свойства ProductNumber.</param>
-        /// <param name="standardCost">Начальное значение свойства StandardCost.</param>
-        /// <param name="listPrice">Начальное значение свойства ListPrice.</param>
-        /// <param name="sellStartDate">Начальное значение свойства SellStartDate.</param>
-        /// <param name="rowguid">Начальное значение свойства rowguid.</param>
-        /// <param name="modifiedDate">Начальное значение свойства ModifiedDate.</param>
+        /// <param name="productID">Исходное значение свойства ProductID.</param>
+        /// <param name="name">Исходное значение свойства Name.</param>
+        /// <param name="productNumber">Исходное значение свойства ProductNumber.</param>
+        /// <param name="standardCost">Исходное значение свойства StandardCost.</param>
+        /// <param name="listPrice">Исходное значение свойства ListPrice.</param>
+        /// <param name="sellStartDate">Исходное значение свойства SellStartDate.</param>
+        /// <param name="rowguid">Исходное значение свойства rowguid.</param>
+        /// <param name="modifiedDate">Исходное значение свойства ModifiedDate.</param>
         public static Product CreateProduct(global::System.Int32 productID, global::System.String name, global::System.String productNumber, global::System.Decimal standardCost, global::System.Decimal listPrice, global::System.DateTime sellStartDate, global::System.Guid rowguid, global::System.DateTime modifiedDate)
         {
             Product product = new Product();
             product.ProductID = productID;
-            
             product.Name = name;
-            
             product.ProductNumber = productNumber;
-            
             product.StandardCost = standardCost;
-            
             product.ListPrice = listPrice;
-            
             product.SellStartDate = sellStartDate;
-            
             product.rowguid = rowguid;
-            
             product.ModifiedDate = modifiedDate;
-            
             return product;
         }
+
         #endregion
 
         #region Свойства-примитивы
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1443,12 +1424,11 @@ namespace DataServicesWebApp
                     OnProductIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _ProductID;
         partial void OnProductIDChanging(global::System.Int32 value);
         partial void OnProductIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1468,12 +1448,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
-                
         }
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1493,12 +1472,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ProductNumber");
                 OnProductNumberChanged();
             }
-                
         }
         private global::System.String _ProductNumber;
         partial void OnProductNumberChanging(global::System.String value);
         partial void OnProductNumberChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1518,12 +1496,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Color");
                 OnColorChanged();
             }
-                
         }
         private global::System.String _Color;
         partial void OnColorChanging(global::System.String value);
         partial void OnColorChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1543,12 +1520,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("StandardCost");
                 OnStandardCostChanged();
             }
-                
         }
         private global::System.Decimal _StandardCost;
         partial void OnStandardCostChanging(global::System.Decimal value);
         partial void OnStandardCostChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1568,12 +1544,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ListPrice");
                 OnListPriceChanged();
             }
-                
         }
         private global::System.Decimal _ListPrice;
         partial void OnListPriceChanging(global::System.Decimal value);
         partial void OnListPriceChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1593,12 +1568,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Size");
                 OnSizeChanged();
             }
-                
         }
         private global::System.String _Size;
         partial void OnSizeChanging(global::System.String value);
         partial void OnSizeChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1618,12 +1592,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Weight");
                 OnWeightChanged();
             }
-                
         }
         private Nullable<global::System.Decimal> _Weight;
         partial void OnWeightChanging(Nullable<global::System.Decimal> value);
         partial void OnWeightChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1643,12 +1616,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("SellStartDate");
                 OnSellStartDateChanged();
             }
-                
         }
         private global::System.DateTime _SellStartDate;
         partial void OnSellStartDateChanging(global::System.DateTime value);
         partial void OnSellStartDateChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1668,12 +1640,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("SellEndDate");
                 OnSellEndDateChanged();
             }
-                
         }
         private Nullable<global::System.DateTime> _SellEndDate;
         partial void OnSellEndDateChanging(Nullable<global::System.DateTime> value);
         partial void OnSellEndDateChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1693,12 +1664,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("DiscontinuedDate");
                 OnDiscontinuedDateChanged();
             }
-                
         }
         private Nullable<global::System.DateTime> _DiscontinuedDate;
         partial void OnDiscontinuedDateChanging(Nullable<global::System.DateTime> value);
         partial void OnDiscontinuedDateChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1718,12 +1688,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ThumbNailPhoto");
                 OnThumbNailPhotoChanged();
             }
-                
         }
         private global::System.Byte[] _ThumbNailPhoto;
         partial void OnThumbNailPhotoChanging(global::System.Byte[] value);
         partial void OnThumbNailPhotoChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1743,12 +1712,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ThumbnailPhotoFileName");
                 OnThumbnailPhotoFileNameChanged();
             }
-                
         }
         private global::System.String _ThumbnailPhotoFileName;
         partial void OnThumbnailPhotoFileNameChanging(global::System.String value);
         partial void OnThumbnailPhotoFileNameChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1768,12 +1736,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("rowguid");
                 OnrowguidChanged();
             }
-                
         }
         private global::System.Guid _rowguid;
         partial void OnrowguidChanging(global::System.Guid value);
         partial void OnrowguidChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1793,22 +1760,23 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ModifiedDate");
                 OnModifiedDateChanged();
             }
-                
         }
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-        
+
         #endregion
+
     
         #region Свойства навигации
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_Product_ProductCategory_ProductCategoryID", "ProductCategory")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_Product_ProductCategory_ProductCategoryID", "ProductCategory")]
         public ProductCategory ProductCategory
         {
             get
@@ -1839,13 +1807,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_Product_ProductModel_ProductModelID", "ProductModel")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_Product_ProductModel_ProductModelID", "ProductModel")]
         public ProductModel ProductModel
         {
             get
@@ -1876,13 +1845,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderDetail_Product_ProductID", "SalesOrderDetail")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderDetail_Product_ProductID", "SalesOrderDetail")]
         public EntityCollection<SalesOrderDetail> SalesOrderDetails
         {
             get
@@ -1897,7 +1867,9 @@ namespace DataServicesWebApp
                 }
             }
         }
+
         #endregion
+
     }
     
     /// <summary>
@@ -1908,30 +1880,29 @@ namespace DataServicesWebApp
     [DataContractAttribute(IsReference=true)]
     public partial class ProductCategory : EntityObject
     {
-        #region Метод фабрики
+        #region Фабричный метод
+    
         /// <summary>
-        /// Создать новый объект ProductCategory.
+        /// Создание нового объекта ProductCategory.
         /// </summary>
-        /// <param name="productCategoryID">Начальное значение свойства ProductCategoryID.</param>
-        /// <param name="name">Начальное значение свойства Name.</param>
-        /// <param name="rowguid">Начальное значение свойства rowguid.</param>
-        /// <param name="modifiedDate">Начальное значение свойства ModifiedDate.</param>
+        /// <param name="productCategoryID">Исходное значение свойства ProductCategoryID.</param>
+        /// <param name="name">Исходное значение свойства Name.</param>
+        /// <param name="rowguid">Исходное значение свойства rowguid.</param>
+        /// <param name="modifiedDate">Исходное значение свойства ModifiedDate.</param>
         public static ProductCategory CreateProductCategory(global::System.Int32 productCategoryID, global::System.String name, global::System.Guid rowguid, global::System.DateTime modifiedDate)
         {
             ProductCategory productCategory = new ProductCategory();
             productCategory.ProductCategoryID = productCategoryID;
-            
             productCategory.Name = name;
-            
             productCategory.rowguid = rowguid;
-            
             productCategory.ModifiedDate = modifiedDate;
-            
             return productCategory;
         }
+
         #endregion
 
         #region Свойства-примитивы
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1954,12 +1925,11 @@ namespace DataServicesWebApp
                     OnProductCategoryIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _ProductCategoryID;
         partial void OnProductCategoryIDChanging(global::System.Int32 value);
         partial void OnProductCategoryIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -1979,12 +1949,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
-                
         }
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2004,12 +1973,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("rowguid");
                 OnrowguidChanged();
             }
-                
         }
         private global::System.Guid _rowguid;
         partial void OnrowguidChanging(global::System.Guid value);
         partial void OnrowguidChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2029,22 +1997,23 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ModifiedDate");
                 OnModifiedDateChanged();
             }
-                
         }
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-        
+
         #endregion
+
     
         #region Свойства навигации
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_Product_ProductCategory_ProductCategoryID", "Product")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_Product_ProductCategory_ProductCategoryID", "Product")]
         public EntityCollection<Product> Products
         {
             get
@@ -2059,13 +2028,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID", "ProductCategory1")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID", "ProductCategory1")]
         public EntityCollection<ProductCategory> ProductCategory1
         {
             get
@@ -2080,13 +2050,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID", "ProductCategory")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID", "ProductCategory")]
         public ProductCategory ProductCategory2
         {
             get
@@ -2117,7 +2088,9 @@ namespace DataServicesWebApp
                 }
             }
         }
+
         #endregion
+
     }
     
     /// <summary>
@@ -2128,30 +2101,29 @@ namespace DataServicesWebApp
     [DataContractAttribute(IsReference=true)]
     public partial class ProductDescription : EntityObject
     {
-        #region Метод фабрики
+        #region Фабричный метод
+    
         /// <summary>
-        /// Создать новый объект ProductDescription.
+        /// Создание нового объекта ProductDescription.
         /// </summary>
-        /// <param name="productDescriptionID">Начальное значение свойства ProductDescriptionID.</param>
-        /// <param name="description">Начальное значение свойства Description.</param>
-        /// <param name="rowguid">Начальное значение свойства rowguid.</param>
-        /// <param name="modifiedDate">Начальное значение свойства ModifiedDate.</param>
+        /// <param name="productDescriptionID">Исходное значение свойства ProductDescriptionID.</param>
+        /// <param name="description">Исходное значение свойства Description.</param>
+        /// <param name="rowguid">Исходное значение свойства rowguid.</param>
+        /// <param name="modifiedDate">Исходное значение свойства ModifiedDate.</param>
         public static ProductDescription CreateProductDescription(global::System.Int32 productDescriptionID, global::System.String description, global::System.Guid rowguid, global::System.DateTime modifiedDate)
         {
             ProductDescription productDescription = new ProductDescription();
             productDescription.ProductDescriptionID = productDescriptionID;
-            
             productDescription.Description = description;
-            
             productDescription.rowguid = rowguid;
-            
             productDescription.ModifiedDate = modifiedDate;
-            
             return productDescription;
         }
+
         #endregion
 
         #region Свойства-примитивы
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2174,12 +2146,11 @@ namespace DataServicesWebApp
                     OnProductDescriptionIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _ProductDescriptionID;
         partial void OnProductDescriptionIDChanging(global::System.Int32 value);
         partial void OnProductDescriptionIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2199,12 +2170,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
-                
         }
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2224,12 +2194,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("rowguid");
                 OnrowguidChanged();
             }
-                
         }
         private global::System.Guid _rowguid;
         partial void OnrowguidChanging(global::System.Guid value);
         partial void OnrowguidChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2249,22 +2218,23 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ModifiedDate");
                 OnModifiedDateChanged();
             }
-                
         }
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-        
+
         #endregion
+
     
         #region Свойства навигации
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID", "ProductModelProductDescription")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID", "ProductModelProductDescription")]
         public EntityCollection<ProductModelProductDescription> ProductModelProductDescriptions
         {
             get
@@ -2279,7 +2249,9 @@ namespace DataServicesWebApp
                 }
             }
         }
+
         #endregion
+
     }
     
     /// <summary>
@@ -2290,30 +2262,29 @@ namespace DataServicesWebApp
     [DataContractAttribute(IsReference=true)]
     public partial class ProductModel : EntityObject
     {
-        #region Метод фабрики
+        #region Фабричный метод
+    
         /// <summary>
-        /// Создать новый объект ProductModel.
+        /// Создание нового объекта ProductModel.
         /// </summary>
-        /// <param name="productModelID">Начальное значение свойства ProductModelID.</param>
-        /// <param name="name">Начальное значение свойства Name.</param>
-        /// <param name="rowguid">Начальное значение свойства rowguid.</param>
-        /// <param name="modifiedDate">Начальное значение свойства ModifiedDate.</param>
+        /// <param name="productModelID">Исходное значение свойства ProductModelID.</param>
+        /// <param name="name">Исходное значение свойства Name.</param>
+        /// <param name="rowguid">Исходное значение свойства rowguid.</param>
+        /// <param name="modifiedDate">Исходное значение свойства ModifiedDate.</param>
         public static ProductModel CreateProductModel(global::System.Int32 productModelID, global::System.String name, global::System.Guid rowguid, global::System.DateTime modifiedDate)
         {
             ProductModel productModel = new ProductModel();
             productModel.ProductModelID = productModelID;
-            
             productModel.Name = name;
-            
             productModel.rowguid = rowguid;
-            
             productModel.ModifiedDate = modifiedDate;
-            
             return productModel;
         }
+
         #endregion
 
         #region Свойства-примитивы
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2336,12 +2307,11 @@ namespace DataServicesWebApp
                     OnProductModelIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _ProductModelID;
         partial void OnProductModelIDChanging(global::System.Int32 value);
         partial void OnProductModelIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2361,12 +2331,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
-                
         }
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2386,12 +2355,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("CatalogDescription");
                 OnCatalogDescriptionChanged();
             }
-                
         }
         private global::System.String _CatalogDescription;
         partial void OnCatalogDescriptionChanging(global::System.String value);
         partial void OnCatalogDescriptionChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2411,12 +2379,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("rowguid");
                 OnrowguidChanged();
             }
-                
         }
         private global::System.Guid _rowguid;
         partial void OnrowguidChanging(global::System.Guid value);
         partial void OnrowguidChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2436,22 +2403,23 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ModifiedDate");
                 OnModifiedDateChanged();
             }
-                
         }
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-        
+
         #endregion
+
     
         #region Свойства навигации
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_Product_ProductModel_ProductModelID", "Product")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_Product_ProductModel_ProductModelID", "Product")]
         public EntityCollection<Product> Products
         {
             get
@@ -2466,13 +2434,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductModelProductDescription_ProductModel_ProductModelID", "ProductModelProductDescription")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductModelProductDescription_ProductModel_ProductModelID", "ProductModelProductDescription")]
         public EntityCollection<ProductModelProductDescription> ProductModelProductDescriptions
         {
             get
@@ -2487,7 +2456,9 @@ namespace DataServicesWebApp
                 }
             }
         }
+
         #endregion
+
     }
     
     /// <summary>
@@ -2498,33 +2469,31 @@ namespace DataServicesWebApp
     [DataContractAttribute(IsReference=true)]
     public partial class ProductModelProductDescription : EntityObject
     {
-        #region Метод фабрики
+        #region Фабричный метод
+    
         /// <summary>
-        /// Создать новый объект ProductModelProductDescription.
+        /// Создание нового объекта ProductModelProductDescription.
         /// </summary>
-        /// <param name="productModelID">Начальное значение свойства ProductModelID.</param>
-        /// <param name="productDescriptionID">Начальное значение свойства ProductDescriptionID.</param>
-        /// <param name="culture">Начальное значение свойства Culture.</param>
-        /// <param name="rowguid">Начальное значение свойства rowguid.</param>
-        /// <param name="modifiedDate">Начальное значение свойства ModifiedDate.</param>
+        /// <param name="productModelID">Исходное значение свойства ProductModelID.</param>
+        /// <param name="productDescriptionID">Исходное значение свойства ProductDescriptionID.</param>
+        /// <param name="culture">Исходное значение свойства Culture.</param>
+        /// <param name="rowguid">Исходное значение свойства rowguid.</param>
+        /// <param name="modifiedDate">Исходное значение свойства ModifiedDate.</param>
         public static ProductModelProductDescription CreateProductModelProductDescription(global::System.Int32 productModelID, global::System.Int32 productDescriptionID, global::System.String culture, global::System.Guid rowguid, global::System.DateTime modifiedDate)
         {
             ProductModelProductDescription productModelProductDescription = new ProductModelProductDescription();
             productModelProductDescription.ProductModelID = productModelID;
-            
             productModelProductDescription.ProductDescriptionID = productDescriptionID;
-            
             productModelProductDescription.Culture = culture;
-            
             productModelProductDescription.rowguid = rowguid;
-            
             productModelProductDescription.ModifiedDate = modifiedDate;
-            
             return productModelProductDescription;
         }
+
         #endregion
 
         #region Свойства-примитивы
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2547,12 +2516,11 @@ namespace DataServicesWebApp
                     OnProductModelIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _ProductModelID;
         partial void OnProductModelIDChanging(global::System.Int32 value);
         partial void OnProductModelIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2575,12 +2543,11 @@ namespace DataServicesWebApp
                     OnProductDescriptionIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _ProductDescriptionID;
         partial void OnProductDescriptionIDChanging(global::System.Int32 value);
         partial void OnProductDescriptionIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2603,12 +2570,11 @@ namespace DataServicesWebApp
                     OnCultureChanged();
                 }
             }
-                
         }
         private global::System.String _Culture;
         partial void OnCultureChanging(global::System.String value);
         partial void OnCultureChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2628,12 +2594,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("rowguid");
                 OnrowguidChanged();
             }
-                
         }
         private global::System.Guid _rowguid;
         partial void OnrowguidChanging(global::System.Guid value);
         partial void OnrowguidChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2653,22 +2618,23 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ModifiedDate");
                 OnModifiedDateChanged();
             }
-                
         }
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-        
+
         #endregion
+
     
         #region Свойства навигации
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID", "ProductDescription")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID", "ProductDescription")]
         public ProductDescription ProductDescription
         {
             get
@@ -2699,13 +2665,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductModelProductDescription_ProductModel_ProductModelID", "ProductModel")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_ProductModelProductDescription_ProductModel_ProductModelID", "ProductModel")]
         public ProductModel ProductModel
         {
             get
@@ -2736,7 +2703,9 @@ namespace DataServicesWebApp
                 }
             }
         }
+
         #endregion
+
     }
     
     /// <summary>
@@ -2747,42 +2716,37 @@ namespace DataServicesWebApp
     [DataContractAttribute(IsReference=true)]
     public partial class SalesOrderDetail : EntityObject
     {
-        #region Метод фабрики
+        #region Фабричный метод
+    
         /// <summary>
-        /// Создать новый объект SalesOrderDetail.
+        /// Создание нового объекта SalesOrderDetail.
         /// </summary>
-        /// <param name="salesOrderID">Начальное значение свойства SalesOrderID.</param>
-        /// <param name="salesOrderDetailID">Начальное значение свойства SalesOrderDetailID.</param>
-        /// <param name="orderQty">Начальное значение свойства OrderQty.</param>
-        /// <param name="unitPrice">Начальное значение свойства UnitPrice.</param>
-        /// <param name="unitPriceDiscount">Начальное значение свойства UnitPriceDiscount.</param>
-        /// <param name="lineTotal">Начальное значение свойства LineTotal.</param>
-        /// <param name="rowguid">Начальное значение свойства rowguid.</param>
-        /// <param name="modifiedDate">Начальное значение свойства ModifiedDate.</param>
+        /// <param name="salesOrderID">Исходное значение свойства SalesOrderID.</param>
+        /// <param name="salesOrderDetailID">Исходное значение свойства SalesOrderDetailID.</param>
+        /// <param name="orderQty">Исходное значение свойства OrderQty.</param>
+        /// <param name="unitPrice">Исходное значение свойства UnitPrice.</param>
+        /// <param name="unitPriceDiscount">Исходное значение свойства UnitPriceDiscount.</param>
+        /// <param name="lineTotal">Исходное значение свойства LineTotal.</param>
+        /// <param name="rowguid">Исходное значение свойства rowguid.</param>
+        /// <param name="modifiedDate">Исходное значение свойства ModifiedDate.</param>
         public static SalesOrderDetail CreateSalesOrderDetail(global::System.Int32 salesOrderID, global::System.Int32 salesOrderDetailID, global::System.Int16 orderQty, global::System.Decimal unitPrice, global::System.Decimal unitPriceDiscount, global::System.Decimal lineTotal, global::System.Guid rowguid, global::System.DateTime modifiedDate)
         {
             SalesOrderDetail salesOrderDetail = new SalesOrderDetail();
             salesOrderDetail.SalesOrderID = salesOrderID;
-            
             salesOrderDetail.SalesOrderDetailID = salesOrderDetailID;
-            
             salesOrderDetail.OrderQty = orderQty;
-            
             salesOrderDetail.UnitPrice = unitPrice;
-            
             salesOrderDetail.UnitPriceDiscount = unitPriceDiscount;
-            
             salesOrderDetail.LineTotal = lineTotal;
-            
             salesOrderDetail.rowguid = rowguid;
-            
             salesOrderDetail.ModifiedDate = modifiedDate;
-            
             return salesOrderDetail;
         }
+
         #endregion
 
         #region Свойства-примитивы
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2805,12 +2769,11 @@ namespace DataServicesWebApp
                     OnSalesOrderIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _SalesOrderID;
         partial void OnSalesOrderIDChanging(global::System.Int32 value);
         partial void OnSalesOrderIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2833,12 +2796,11 @@ namespace DataServicesWebApp
                     OnSalesOrderDetailIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _SalesOrderDetailID;
         partial void OnSalesOrderDetailIDChanging(global::System.Int32 value);
         partial void OnSalesOrderDetailIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2858,12 +2820,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("OrderQty");
                 OnOrderQtyChanged();
             }
-                
         }
         private global::System.Int16 _OrderQty;
         partial void OnOrderQtyChanging(global::System.Int16 value);
         partial void OnOrderQtyChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2883,12 +2844,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("UnitPrice");
                 OnUnitPriceChanged();
             }
-                
         }
         private global::System.Decimal _UnitPrice;
         partial void OnUnitPriceChanging(global::System.Decimal value);
         partial void OnUnitPriceChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2908,12 +2868,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("UnitPriceDiscount");
                 OnUnitPriceDiscountChanged();
             }
-                
         }
         private global::System.Decimal _UnitPriceDiscount;
         partial void OnUnitPriceDiscountChanging(global::System.Decimal value);
         partial void OnUnitPriceDiscountChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2933,12 +2892,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("LineTotal");
                 OnLineTotalChanged();
             }
-                
         }
         private global::System.Decimal _LineTotal;
         partial void OnLineTotalChanging(global::System.Decimal value);
         partial void OnLineTotalChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2958,12 +2916,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("rowguid");
                 OnrowguidChanged();
             }
-                
         }
         private global::System.Guid _rowguid;
         partial void OnrowguidChanging(global::System.Guid value);
         partial void OnrowguidChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -2983,22 +2940,23 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ModifiedDate");
                 OnModifiedDateChanged();
             }
-                
         }
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-        
+
         #endregion
+
     
         #region Свойства навигации
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderDetail_Product_ProductID", "Product")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderDetail_Product_ProductID", "Product")]
         public Product Product
         {
             get
@@ -3029,13 +2987,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID", "SalesOrderHeader")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID", "SalesOrderHeader")]
         public SalesOrderHeader SalesOrderHeader
         {
             get
@@ -3066,7 +3025,9 @@ namespace DataServicesWebApp
                 }
             }
         }
+
         #endregion
+
     }
     
     /// <summary>
@@ -3077,60 +3038,49 @@ namespace DataServicesWebApp
     [DataContractAttribute(IsReference=true)]
     public partial class SalesOrderHeader : EntityObject
     {
-        #region Метод фабрики
+        #region Фабричный метод
+    
         /// <summary>
-        /// Создать новый объект SalesOrderHeader.
+        /// Создание нового объекта SalesOrderHeader.
         /// </summary>
-        /// <param name="salesOrderID">Начальное значение свойства SalesOrderID.</param>
-        /// <param name="revisionNumber">Начальное значение свойства RevisionNumber.</param>
-        /// <param name="orderDate">Начальное значение свойства OrderDate.</param>
-        /// <param name="dueDate">Начальное значение свойства DueDate.</param>
-        /// <param name="status">Начальное значение свойства Status.</param>
-        /// <param name="onlineOrderFlag">Начальное значение свойства OnlineOrderFlag.</param>
-        /// <param name="salesOrderNumber">Начальное значение свойства SalesOrderNumber.</param>
-        /// <param name="shipMethod">Начальное значение свойства ShipMethod.</param>
-        /// <param name="subTotal">Начальное значение свойства SubTotal.</param>
-        /// <param name="taxAmt">Начальное значение свойства TaxAmt.</param>
-        /// <param name="freight">Начальное значение свойства Freight.</param>
-        /// <param name="totalDue">Начальное значение свойства TotalDue.</param>
-        /// <param name="rowguid">Начальное значение свойства rowguid.</param>
-        /// <param name="modifiedDate">Начальное значение свойства ModifiedDate.</param>
+        /// <param name="salesOrderID">Исходное значение свойства SalesOrderID.</param>
+        /// <param name="revisionNumber">Исходное значение свойства RevisionNumber.</param>
+        /// <param name="orderDate">Исходное значение свойства OrderDate.</param>
+        /// <param name="dueDate">Исходное значение свойства DueDate.</param>
+        /// <param name="status">Исходное значение свойства Status.</param>
+        /// <param name="onlineOrderFlag">Исходное значение свойства OnlineOrderFlag.</param>
+        /// <param name="salesOrderNumber">Исходное значение свойства SalesOrderNumber.</param>
+        /// <param name="shipMethod">Исходное значение свойства ShipMethod.</param>
+        /// <param name="subTotal">Исходное значение свойства SubTotal.</param>
+        /// <param name="taxAmt">Исходное значение свойства TaxAmt.</param>
+        /// <param name="freight">Исходное значение свойства Freight.</param>
+        /// <param name="totalDue">Исходное значение свойства TotalDue.</param>
+        /// <param name="rowguid">Исходное значение свойства rowguid.</param>
+        /// <param name="modifiedDate">Исходное значение свойства ModifiedDate.</param>
         public static SalesOrderHeader CreateSalesOrderHeader(global::System.Int32 salesOrderID, global::System.Byte revisionNumber, global::System.DateTime orderDate, global::System.DateTime dueDate, global::System.Byte status, global::System.Boolean onlineOrderFlag, global::System.String salesOrderNumber, global::System.String shipMethod, global::System.Decimal subTotal, global::System.Decimal taxAmt, global::System.Decimal freight, global::System.Decimal totalDue, global::System.Guid rowguid, global::System.DateTime modifiedDate)
         {
             SalesOrderHeader salesOrderHeader = new SalesOrderHeader();
             salesOrderHeader.SalesOrderID = salesOrderID;
-            
             salesOrderHeader.RevisionNumber = revisionNumber;
-            
             salesOrderHeader.OrderDate = orderDate;
-            
             salesOrderHeader.DueDate = dueDate;
-            
             salesOrderHeader.Status = status;
-            
             salesOrderHeader.OnlineOrderFlag = onlineOrderFlag;
-            
             salesOrderHeader.SalesOrderNumber = salesOrderNumber;
-            
             salesOrderHeader.ShipMethod = shipMethod;
-            
             salesOrderHeader.SubTotal = subTotal;
-            
             salesOrderHeader.TaxAmt = taxAmt;
-            
             salesOrderHeader.Freight = freight;
-            
             salesOrderHeader.TotalDue = totalDue;
-            
             salesOrderHeader.rowguid = rowguid;
-            
             salesOrderHeader.ModifiedDate = modifiedDate;
-            
             return salesOrderHeader;
         }
+
         #endregion
 
         #region Свойства-примитивы
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3153,12 +3103,11 @@ namespace DataServicesWebApp
                     OnSalesOrderIDChanged();
                 }
             }
-                
         }
         private global::System.Int32 _SalesOrderID;
         partial void OnSalesOrderIDChanging(global::System.Int32 value);
         partial void OnSalesOrderIDChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3178,12 +3127,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("RevisionNumber");
                 OnRevisionNumberChanged();
             }
-                
         }
         private global::System.Byte _RevisionNumber;
         partial void OnRevisionNumberChanging(global::System.Byte value);
         partial void OnRevisionNumberChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3203,12 +3151,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("OrderDate");
                 OnOrderDateChanged();
             }
-                
         }
         private global::System.DateTime _OrderDate;
         partial void OnOrderDateChanging(global::System.DateTime value);
         partial void OnOrderDateChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3228,12 +3175,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("DueDate");
                 OnDueDateChanged();
             }
-                
         }
         private global::System.DateTime _DueDate;
         partial void OnDueDateChanging(global::System.DateTime value);
         partial void OnDueDateChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3253,12 +3199,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ShipDate");
                 OnShipDateChanged();
             }
-                
         }
         private Nullable<global::System.DateTime> _ShipDate;
         partial void OnShipDateChanging(Nullable<global::System.DateTime> value);
         partial void OnShipDateChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3278,12 +3223,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
-                
         }
         private global::System.Byte _Status;
         partial void OnStatusChanging(global::System.Byte value);
         partial void OnStatusChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3303,12 +3247,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("OnlineOrderFlag");
                 OnOnlineOrderFlagChanged();
             }
-                
         }
         private global::System.Boolean _OnlineOrderFlag;
         partial void OnOnlineOrderFlagChanging(global::System.Boolean value);
         partial void OnOnlineOrderFlagChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3324,16 +3267,15 @@ namespace DataServicesWebApp
             {
                 OnSalesOrderNumberChanging(value);
                 ReportPropertyChanging("SalesOrderNumber");
-                _SalesOrderNumber = StructuralObject.SetValidValue(value, false);
+                _SalesOrderNumber = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SalesOrderNumber");
                 OnSalesOrderNumberChanged();
             }
-                
         }
         private global::System.String _SalesOrderNumber;
         partial void OnSalesOrderNumberChanging(global::System.String value);
         partial void OnSalesOrderNumberChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3353,12 +3295,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("PurchaseOrderNumber");
                 OnPurchaseOrderNumberChanged();
             }
-                
         }
         private global::System.String _PurchaseOrderNumber;
         partial void OnPurchaseOrderNumberChanging(global::System.String value);
         partial void OnPurchaseOrderNumberChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3378,12 +3319,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("AccountNumber");
                 OnAccountNumberChanged();
             }
-                
         }
         private global::System.String _AccountNumber;
         partial void OnAccountNumberChanging(global::System.String value);
         partial void OnAccountNumberChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3403,12 +3343,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ShipMethod");
                 OnShipMethodChanged();
             }
-                
         }
         private global::System.String _ShipMethod;
         partial void OnShipMethodChanging(global::System.String value);
         partial void OnShipMethodChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3428,12 +3367,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("CreditCardApprovalCode");
                 OnCreditCardApprovalCodeChanged();
             }
-                
         }
         private global::System.String _CreditCardApprovalCode;
         partial void OnCreditCardApprovalCodeChanging(global::System.String value);
         partial void OnCreditCardApprovalCodeChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3453,12 +3391,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("SubTotal");
                 OnSubTotalChanged();
             }
-                
         }
         private global::System.Decimal _SubTotal;
         partial void OnSubTotalChanging(global::System.Decimal value);
         partial void OnSubTotalChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3478,12 +3415,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("TaxAmt");
                 OnTaxAmtChanged();
             }
-                
         }
         private global::System.Decimal _TaxAmt;
         partial void OnTaxAmtChanging(global::System.Decimal value);
         partial void OnTaxAmtChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3503,12 +3439,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Freight");
                 OnFreightChanged();
             }
-                
         }
         private global::System.Decimal _Freight;
         partial void OnFreightChanging(global::System.Decimal value);
         partial void OnFreightChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3528,12 +3463,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("TotalDue");
                 OnTotalDueChanged();
             }
-                
         }
         private global::System.Decimal _TotalDue;
         partial void OnTotalDueChanging(global::System.Decimal value);
         partial void OnTotalDueChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3553,12 +3487,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("Comment");
                 OnCommentChanged();
             }
-                
         }
         private global::System.String _Comment;
         partial void OnCommentChanging(global::System.String value);
         partial void OnCommentChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3578,12 +3511,11 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("rowguid");
                 OnrowguidChanged();
             }
-                
         }
         private global::System.Guid _rowguid;
         partial void OnrowguidChanging(global::System.Guid value);
         partial void OnrowguidChanged();
-        
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
@@ -3603,22 +3535,23 @@ namespace DataServicesWebApp
                 ReportPropertyChanged("ModifiedDate");
                 OnModifiedDateChanged();
             }
-                
         }
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-        
+
         #endregion
+
     
         #region Свойства навигации
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Address_BillTo_AddressID", "Address")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Address_BillTo_AddressID", "Address")]
         public Address Address
         {
             get
@@ -3649,13 +3582,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Address_ShipTo_AddressID", "Address")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Address_ShipTo_AddressID", "Address")]
         public Address Address1
         {
             get
@@ -3686,13 +3620,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Customer_CustomerID", "Customer")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderHeader_Customer_CustomerID", "Customer")]
         public Customer Customer
         {
             get
@@ -3723,13 +3658,14 @@ namespace DataServicesWebApp
                 }
             }
         }
+    
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID", "SalesOrderDetail")] 
+        [EdmRelationshipNavigationPropertyAttribute("AdventureWorksLTModel", "FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID", "SalesOrderDetail")]
         public EntityCollection<SalesOrderDetail> SalesOrderDetails
         {
             get
@@ -3744,9 +3680,12 @@ namespace DataServicesWebApp
                 }
             }
         }
+
         #endregion
+
     }
-    
+
     #endregion
+
     
 }

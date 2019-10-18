@@ -127,6 +127,9 @@ class MainClass
 
     public static void Main()
     {
+        byte x = 0b1111;
+        byte y = 0b1001;
+        Console.WriteLine(Convert.ToString(x^y, 2));
         // отображение атрибутов для класса Account
         DumpAttributes(typeof(Account));
 
@@ -160,6 +163,8 @@ class MainClass
            }
         }
         Console.WriteLine();
+
+        Console.ReadKey();
     }
 }
 

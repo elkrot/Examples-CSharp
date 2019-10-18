@@ -30,6 +30,11 @@ class DeclareArraysSample
         {
             Console.WriteLine("Length of row {0} is {1}", i, scores[i].Length);
         }
+        int x = 0b100101010111;
+
+        Console.WriteLine(x);
+        Console.WriteLine(Convert.ToString(x, 2));
+        Console.ReadKey();
     }
 }
 
